@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moodboard marques — MyFoodcourt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16130F; --surface:#211C16; --line:#332C23;
+    --paper:#F2EDE4; --muted:#9C9284;
+    --accent-1:#D9723F;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ink);color:var(--paper);font-family:"Inter",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+  header.top{padding:76px 0 40px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin:0 0 20px}
+  header.top h1{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(34px,6vw,60px);line-height:1.02;margin:0;max-width:16ch}
+  header.top h1 em{font-style:italic;color:var(--accent-1)}
+  .lede{margin:22px 0 0;max-width:60ch;color:#CFC7B8;font-size:16px}
+  .toc{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .toc a{text-decoration:none;color:var(--paper);font-size:13px;letter-spacing:.04em;border:1px solid var(--line);border-radius:100px;padding:7px 15px;transition:.2s}
+  .toc a:hover{border-color:var(--paper)}
+
+  section.brand{padding:64px 0;border-bottom:1px solid var(--line);scroll-margin-top:20px}
+  .head{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:end;margin-bottom:30px}
+  @media(max-width:760px){.head{grid-template-columns:1fr;gap:18px;align-items:start}}
+  .num{font-size:12px;letter-spacing:.3em;color:var(--muted);text-transform:uppercase}
+  .bname{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(30px,5vw,52px);line-height:1;margin:10px 0 0}
+  .accroche{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin:16px 0 0}
+  .pitch{color:#CFC7B8;font-size:15.5px;margin:0}
+  .meta{color:var(--muted);font-size:12px;margin:14px 0 0}
+  .meta a{color:var(--muted)}
+
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:10px;grid-auto-flow:dense}
+  @media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px}}
+  .cell{position:relative;overflow:hidden;border-radius:10px;background:var(--surface);border:1px solid var(--line)}
+  .cell.lg{grid-column:span 2;grid-row:span 2}
+  .cell.wide{grid-column:span 2}
+  @media(max-width:760px){.cell.lg{grid-column:span 2;grid-row:span 2}.cell.wide{grid-column:span 2;grid-row:span 1}}
+  .cell img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0e0b08;transition:transform .5s ease}
+  .cell.photo img{object-fit:cover}
+  .cell:hover img{transform:scale(1.04)}
+  .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .tag{position:absolute;left:8px;bottom:8px;z-index:2;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:rgba(0,0,0,.55);backdrop-filter:blur(3px);color:#fff;padding:3px 7px;border-radius:5px;opacity:0;transition:.2s}
+  .cell:hover .tag{opacity:1}
+
+  #brand-1 .bname,#brand-1 .num,#brand-1 .accroche{color:var(--accent-1)}
+
+  footer{padding:48px 0 90px;color:var(--muted);font-size:12.5px}
+  footer strong{color:var(--paper);font-weight:600}
+  @media(prefers-reduced-motion:reduce){.cell img{transition:none}.cell:hover img{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="eyebrow">MyFoodcourt · Moodboard marques</p>
+    <h1>Zinzin, le sandwich méditerranéen à faire entrer dans <em>vos espaces</em>.</h1>
+    <p class="lede">Univers de marque, savoir-faire et signatures produit, constitués à partir du compte Instagram @zinzin.paris. Une planche pour poser la direction visuelle avant intégration.</p>
+    <nav class="toc">
+      <a href="#brand-1">01 — ZINZIN</a>
+    </nav>
+  </header>
+
+  <section class="brand" id="brand-1">
+    <div class="head">
+      <div>
+        <div class="num">01 — STREET FOOD MÉDITERRANÉENNE · PARIS 9E</div>
+        <h2 class="bname">Zinzin</h2>
+        <p class="accroche">ZINZIN — le sandwich méditerranéen réinventé</p>
+      </div>
+      <div>
+        <p class="pitch">Niché à Pigalle, Zinzin réinvente le sandwich méditerranéen en instant gourmand : le Tunisien à l'œuf, citron confit et harissa, ou le Smash Kefta. Une cuisine de quartier chaleureuse qui s'invite aussi hors les murs, de la Fondation Louis Vuitton aux mariages du Musée de Montmartre. (45 mots)</p>
+        <p class="meta">Images : <a href="https://www.instagram.com/zinzin.paris/">Instagram @zinzin.paris</a> — hébergées sur <a href="https://imagekit.io">ImageKit</a></p>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="cell lg photo"><span class="ph">L'histoire de la marque</span><span class="tag">Univers · L'histoire</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/zinzin-paris/zinzin-paris-histoire-marque_ODYh6JZoZU.jpg" alt="Présentation de la marque Zinzin" onerror="this.style.display='none'"></div>
+      <div class="cell photo"><span class="ph">Le Tunisien</span><span class="tag">Produit · Le Tunisien</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/zinzin-paris/zinzin-paris-sandwich-01_x-bmYTh6P.jpg" alt="Sandwich Tunisien Zinzin" onerror="this.style.display='none'"></div>
+      <div class="cell photo"><span class="ph">Falafel</span><span class="tag">Produit · Falafel</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/zinzin-paris/zinzin-paris-falafel_3cFaZGI5R.jpg" alt="Falafel Zinzin" onerror="this.style.display='none'"></div>
+      <div class="cell photo"><span class="ph">Marché nocturne</span><span class="tag">Univers · Marché nocturne</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/zinzin-paris/zinzin-paris-night-market_p2tnJDKmw.jpg" alt="Zinzin au marché nocturne" onerror="this.style.display='none'"></div>
+      <div class="cell photo wide"><span class="ph">Fondation Louis Vuitton</span><span class="tag">Univers · Événement FLV</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/zinzin-paris/zinzin-paris-fondation-lv_8CeAE8hlp.jpg" alt="Zinzin à la Fondation Louis Vuitton" onerror="this.style.display='none'"></div>
+      <div class="cell photo"><span class="ph">Le Fidel</span><span class="tag">Produit · Le Fidel</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/zinzin-paris/zinzin-paris-fidel__1FfsIpfi.jpg" alt="Sandwich Le Fidel Zinzin" onerror="this.style.display='none'"></div>
+      <div class="cell photo"><span class="ph">L'équipe</span><span class="tag">Univers · L'équipe</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/zinzin-paris/zinzin-paris-summer-team_qFjdlE144.jpg" alt="L'équipe Zinzin en été" onerror="this.style.display='none'"></div>
+      <div class="cell photo"><span class="ph">Le Panizza</span><span class="tag">Produit · Le Panizza</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/zinzin-paris/zinzin-paris-panizza_3iNAo4ACW.jpg" alt="Sandwich Panizza Zinzin" onerror="this.style.display='none'"></div>
+      <div class="cell photo"><span class="ph">Traiteur événementiel</span><span class="tag">Univers · Traiteur événementiel</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/zinzin-paris/zinzin-paris-mariage-traiteur_QbRbQ9XuW.jpg" alt="Zinzin traiteur pour mariage" onerror="this.style.display='none'"></div>
+      <div class="cell photo"><span class="ph">Sandwich Courge</span><span class="tag">Produit · Sandwich Courge</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/zinzin-paris/zinzin-paris-sandwich-courge_msP2-kbF9.jpg" alt="Sandwich Courge Zinzin" onerror="this.style.display='none'"></div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Moodboard MyFoodcourt</strong> — 1 marque · 10 visuels · pitch &amp; accroche. Généré le 25 août 2026.<br>
+    Survolez une image pour son étiquette. Visuels issus du compte Instagram @zinzin.paris, hébergés sur ImageKit (usage moodboard / direction artistique interne — appartiennent à la marque).</p>
+  </footer>
+
+</div>
+</body>
+</html>
