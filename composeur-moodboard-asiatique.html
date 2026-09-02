@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Composeur de moodboard — Street food asiatique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16130F;--surface:#211C16;--line:#332C23;--paper:#F2EDE4;--muted:#9C9284}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:"Inter",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+header.top{padding:56px 0 28px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+h1{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(28px,5vw,44px);line-height:1.05;margin:0}
+.lede{margin:16px 0 0;max-width:64ch;color:#CFC7B8;font-size:15px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+button{font:inherit;font-size:12.5px;color:var(--paper);background:transparent;border:1px solid var(--line);border-radius:100px;padding:7px 15px;cursor:pointer;transition:.15s}
+button:hover{border-color:var(--paper)}
+button.on{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+section.brand{padding:48px 0;border-bottom:1px solid var(--line)}
+.hd{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:end;margin-bottom:20px}
+@media(max-width:820px){.hd{grid-template-columns:1fr;align-items:start}}
+.sur{font-size:12px;letter-spacing:.28em;text-transform:uppercase}
+.bn{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(26px,4.5vw,44px);line-height:1;margin:8px 0 0}
+.acc{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;margin:12px 0 0}
+.pitch{color:#CFC7B8;font-size:15px;margin:0}
+.meta{color:var(--muted);font-size:12px;margin:12px 0 0}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+.board{display:grid;gap:10px}
+.slot{position:relative;overflow:hidden;border-radius:10px;background:var(--surface);border:1px solid var(--line);cursor:pointer}
+.slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.slot.contain img{object-fit:contain;padding:14px;background:#0e0b08}
+.slot:hover img{transform:scale(1.03)}
+.slot:after{content:"Changer";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(10,8,6,.62);color:#fff;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:0;transition:.15s}
+.slot:hover:after{opacity:1}
+.slot .cap{position:absolute;left:7px;bottom:7px;z-index:3;font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(0,0,0,.6);padding:3px 7px;border-radius:4px;color:#fff}
+/* tiroir */
+#drawer{position:fixed;top:0;right:0;height:100%;width:min(430px,92vw);background:#1B1712;border-left:1px solid var(--line);
+  transform:translateX(102%);transition:transform .25s;z-index:50;display:flex;flex-direction:column}
+#drawer.open{transform:none}
+.dh{padding:20px 20px 12px;border-bottom:1px solid var(--line)}
+.dh h3{font-family:"Fraunces",serif;font-weight:400;font-size:20px;margin:0 0 4px}
+.dh p{margin:0;font-size:12px;color:var(--muted)}
+.filters{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+.dg{overflow-y:auto;padding:14px 20px 40px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cand{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--surface);cursor:pointer;aspect-ratio:1}
+.cand img{width:100%;height:100%;object-fit:cover;display:block}
+.cand.used{opacity:.32}
+.cand .n{position:absolute;left:0;right:0;bottom:0;font-size:9.5px;padding:5px 6px;background:linear-gradient(transparent,rgba(0,0,0,.85));color:#fff}
+.cand .fmt{position:absolute;right:5px;top:5px;font-size:8.5px;letter-spacing:.08em;background:rgba(0,0,0,.65);color:#fff;padding:2px 5px;border-radius:3px}
+.cand.warn .fmt{background:#8A4A2E}
+#close{position:absolute;top:14px;right:16px}
+#exp{padding:36px 0 90px}
+textarea{width:100%;height:150px;background:var(--surface);color:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px;font-family:ui-monospace,monospace;font-size:11.5px}
+footer{color:var(--muted);font-size:12px;padding-bottom:70px}
+</style></head><body>
+<div class="wrap">
+<header class="top">
+  <p class="eyebrow">MyFoodcourt · Composeur de moodboard · Street food asiatique</p>
+  <h1>Clique une photo pour la remplacer.</h1>
+  <p class="lede">Chaque planche pioche dans un vivier hébergé. Clique une tuile, choisis un remplaçant dans le tiroir, l'échange est immédiat. Change aussi le schéma de la galerie avec les boutons sous chaque marque. Quand c'est bon, exporte la recette en bas de page et colle-la-moi : je produis le moodboard final propre.</p>
+  <div class="bar"><button onclick="reset()">Réinitialiser</button><button onclick="document.getElementById('exp').scrollIntoView({behavior:'smooth'})">Exporter la recette</button></div>
+</header>
+<div id="boards"></div>
+<section id="exp">
+  <h3 style="font-family:Fraunces,serif;font-weight:400;font-size:22px;margin:0 0 6px">Recette</h3>
+  <p style="color:var(--muted);font-size:13px;margin:0 0 12px">Copie ce bloc et colle-le dans la conversation.</p>
+  <textarea id="out" readonly></textarea>
+  <div class="bar"><button onclick="copyOut()">Copier</button></div>
+</section>
+<footer>Vivier : 67 visuels hébergés sur ImageKit. Les images appartiennent aux maisons concernées (usage moodboard interne).</footer>
+</div>
+<aside id="drawer">
+  <button id="close" onclick="closeDrawer()">Fermer</button>
+  <div class="dh"><h3 id="dt">Remplacer</h3><p id="dp"></p>
+    <div class="filters" id="dfilters"></div></div>
+  <div class="dg" id="dgrid"></div>
+</aside>
+<script>
+const D = {"pool": [{"id": "i0", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-logo_bZ_p5WoVt.png", "w": 400, "h": 145, "r": 2.759, "t": "identite", "l": "Logo_bz", "svg": false}, {"id": "i1", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-bol-signature_X5Ht-xqoz.jpg", "w": 1179, "h": 2096, "r": 0.562, "t": "produit", "l": "Bol signature", "svg": false}, {"id": "i2", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-yaki-udon-soba_u2Y05pE9o.jpg", "w": 720, "h": 1280, "r": 0.562, "t": "produit", "l": "Yaki udon soba", "svg": false}, {"id": "i3", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-shoyu-ramen_tzPRh6uES.jpg", "w": 1179, "h": 2096, "r": 0.562, "t": "produit", "l": "Shoyu ramen", "svg": false}, {"id": "i4", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-porc-chashu_-rXf3KnVz.jpg", "w": 720, "h": 1280, "r": 0.562, "t": "produit", "l": "Porc chashu", "svg": false}, {"id": "i5", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-chicken-chashu_QdFCX7Z6S.jpg", "w": 1179, "h": 2096, "r": 0.562, "t": "produit", "l": "Chicken chashu", "svg": false}, {"id": "i6", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-maison-histoire_ml6NsNaQA.jpg", "w": 640, "h": 1136, "r": 0.563, "t": "univers", "l": "Maison histoire", "svg": false}, {"id": "i7", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-quatre-types-ramen_iJfbxlPUf.jpg", "w": 2304, "h": 4096, "r": 0.562, "t": "produit", "l": "Quatre types ramen", "svg": false}, {"id": "i8", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-comptoir-service_FeZVpQIfMZ.jpg", "w": 720, "h": 1280, "r": 0.562, "t": "univers", "l": "Comptoir service", "svg": false}, {"id": "i9", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-clients-decouverte_KWbcrBZLm.jpg", "w": 720, "h": 1280, "r": 0.562, "t": "univers", "l": "Clients decouverte", "svg": false}, {"id": "i10", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-univers-japon_I9HnsN2S1.jpg", "w": 720, "h": 1280, "r": 0.562, "t": "univers", "l": "Univers japon", "svg": false}, {"id": "i11", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-karaage-curry_aYrftYSHA.jpg", "w": 640, "h": 1136, "r": 0.563, "t": "produit", "l": "Karaage curry", "svg": false}, {"id": "i12", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-udon-yuzu_Tmfpa9sD_A.jpg", "w": 640, "h": 1136, "r": 0.563, "t": "produit", "l": "Udon yuzu_tmfpa9sd", "svg": false}, {"id": "i13", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-zaru-soba_Oaidt9vlM.jpg", "w": 1179, "h": 2096, "r": 0.562, "t": "produit", "l": "Zaru soba", "svg": false}, {"id": "i14", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-japan-expo_ZRv9khYQQz.jpg", "w": 1179, "h": 2096, "r": 0.562, "t": "univers", "l": "Japan expo", "svg": false}, {"id": "i15", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-trois-adresses_9-X-QtvZm.jpg", "w": 1080, "h": 1920, "r": 0.562, "t": "univers", "l": "Trois adresses", "svg": false}, {"id": "i16", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-ambiance-izakaya_Mn5VJzdki.jpg", "w": 1320, "h": 2347, "r": 0.562, "t": "univers", "l": "Ambiance izakaya", "svg": false}, {"id": "i17", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/candidats/cand-p1-karaage-curry_CUbvdnalM.jpg", "w": 640, "h": 1136, "r": 0.563, "t": "produit", "l": "Karaage curry", "svg": false}, {"id": "i18", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/candidats/cand-p2-zaru-soba_Apg-Gwoi8.jpg", "w": 640, "h": 1136, "r": 0.563, "t": "produit", "l": "Zaru soba", "svg": false}, {"id": "i19", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/candidats/cand-p3-udon-yuzu_XvXQMmPJF.jpg", "w": 640, "h": 1136, "r": 0.563, "t": "produit", "l": "Udon yuzu", "svg": false}, {"id": "i20", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/candidats/cand-p4-kakigori_3F-ZnGQof.jpg", "w": 1179, "h": 2096, "r": 0.562, "t": "produit", "l": "Kakigori", "svg": false}, {"id": "i21", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/candidats/cand-p5-carte-ete_5l0djVbaH.jpg", "w": 640, "h": 1136, "r": 0.563, "t": "produit", "l": "Carte ete", "svg": false}, {"id": "i22", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/candidats/cand-p6-zaru-soba-degustation_2Z2O5uVLf.jpg", "w": 1179, "h": 2096, "r": 0.562, "t": "produit", "l": "Zaru soba degustation", "svg": false}, {"id": "i23", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/candidats/cand-u1-ambiance-izakaya_B3W6CGIW4.jpg", "w": 1320, "h": 2347, "r": 0.562, "t": "univers", "l": "Ambiance izakaya", "svg": false}, {"id": "i24", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/candidats/cand-u2-vibe-salle_w8YZYMh8O.jpg", "w": 1320, "h": 2347, "r": 0.562, "t": "univers", "l": "Vibe salle", "svg": false}, {"id": "i25", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/candidats/cand-u3-japan-expo-annonce_iciwKgXNt.jpg", "w": 1179, "h": 2096, "r": 0.562, "t": "univers", "l": "Japan expo annonce", "svg": false}, {"id": "i26", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/candidats/cand-u4-japan-expo-stand_d1Pc8wc3D.jpg", "w": 1179, "h": 2096, "r": 0.562, "t": "univers", "l": "Japan expo stand", "svg": false}, {"id": "i27", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/candidats/cand-u5-solidays_E-_GNVeoR.jpg", "w": 720, "h": 1280, "r": 0.562, "t": "univers", "l": "Solidays_e", "svg": false}, {"id": "i28", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/candidats/cand-u6-neko-green_ygB3y74y4.jpg", "w": 640, "h": 1136, "r": 0.563, "t": "univers", "l": "Neko green", "svg": false}, {"id": "i29", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/candidats/cand-u7-trois-adresses_RZmVlptCEp.jpg", "w": 1080, "h": 1920, "r": 0.562, "t": "univers", "l": "Trois adresses", "svg": false}, {"id": "i30", "b": "neko-ramen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/candidats/cand-u8-cuisine-commandes_IFyDnNZ9b.jpg", "w": 1179, "h": 2096, "r": 0.562, "t": "univers", "l": "Cuisine commandes", "svg": false}, {"id": "i31", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-biangbiang-ete__egiyLUYg.jpg", "w": 3072, "h": 4096, "r": 0.75, "t": "produit", "l": "Biangbiang ete_", "svg": false}, {"id": "i32", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-biangbiang-et-mo_pBJB-eLph.jpg", "w": 640, "h": 1136, "r": 0.563, "t": "produit", "l": "Biangbiang et mo", "svg": false}, {"id": "i33", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-riz-au-porc_wfs-jWb-x.jpg", "w": 720, "h": 900, "r": 0.8, "t": "produit", "l": "Riz au porc", "svg": false}, {"id": "i34", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-table-shaanxi-01_FZCsvWCaSj.jpg", "w": 1333, "h": 2000, "r": 0.666, "t": "produit", "l": "Table shaanxi 01", "svg": false}, {"id": "i35", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-table-shaanxi-02_sbmxiNOeZ.jpg", "w": 1333, "h": 2000, "r": 0.666, "t": "produit", "l": "Table shaanxi 02", "svg": false}, {"id": "i36", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-menilmontant_C61bGkmXu.jpg", "w": 1215, "h": 2160, "r": 0.562, "t": "produit", "l": "Menilmontant", "svg": false}, {"id": "i37", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-louvre_vY8m3KO3w.jpg", "w": 640, "h": 1138, "r": 0.562, "t": "univers", "l": "Louvre", "svg": false}, {"id": "i38", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-canal-saint-martin-2011_r_hg6xl3A.jpg", "w": 1215, "h": 2160, "r": 0.562, "t": "univers", "l": "Canal saint martin 2011_r", "svg": false}, {"id": "i39", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-equipes_0ayeub79m.jpg", "w": 1215, "h": 2160, "r": 0.562, "t": "univers", "l": "Equipes", "svg": false}, {"id": "i40", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-bastille_XxxPyH-2L.jpg", "w": 1328, "h": 2364, "r": 0.562, "t": "univers", "l": "Bastille", "svg": false}, {"id": "i41", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-plat-01_cqWZanKdy.jpg", "w": 1707, "h": 2560, "r": 0.667, "t": "produit", "l": "Plat 01", "svg": false}, {"id": "i42", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-plat-02_WA8_t5N1i.jpg", "w": 1707, "h": 2560, "r": 0.667, "t": "produit", "l": "Plat 02_wa8", "svg": false}, {"id": "i43", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-plat-03_1p8rMm_E6.jpg", "w": 1333, "h": 2000, "r": 0.666, "t": "produit", "l": "Plat 03_1p8rmm", "svg": false}, {"id": "i44", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-plat-04_nVUf0H2u5.jpg", "w": 1707, "h": 2560, "r": 0.667, "t": "produit", "l": "Plat 04", "svg": false}, {"id": "i45", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-plat-05_drJ5JwMr9.jpg", "w": 1707, "h": 2560, "r": 0.667, "t": "produit", "l": "Plat 05", "svg": false}, {"id": "i46", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-lieu-01_PYNWHHqzw.jpg", "w": 1333, "h": 2000, "r": 0.666, "t": "univers", "l": "Lieu 01", "svg": false}, {"id": "i47", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-lieu-02_AcQy8wZRX.jpg", "w": 1707, "h": 2560, "r": 0.667, "t": "univers", "l": "Lieu 02", "svg": false}, {"id": "i48", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-lieu-03_B_C23d5b9Y.jpg", "w": 1707, "h": 2560, "r": 0.667, "t": "univers", "l": "Lieu 03_b", "svg": false}, {"id": "i49", "b": "la-taverne-de-zhao", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/la-taverne-de-zhao/zhao-lieu-04_WR99Ln_4HK.jpg", "w": 1333, "h": 2000, "r": 0.666, "t": "univers", "l": "Lieu 04_wr99ln", "svg": false}, {"id": "i50", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-logo_iniOM_Obl.svg", "w": 177, "h": 72, "r": 2.458, "t": "identite", "l": "Logo_iniom", "svg": true}, {"id": "i51", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-jeyuk-bokkeum-soju_OHsUXNUqT.jpg", "w": 1024, "h": 1024, "r": 1.0, "t": "produit", "l": "Jeyuk bokkeum soju", "svg": false}, {"id": "i52", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-sundubu-jjigae_gqHtWsoBq.jpg", "w": 1081, "h": 1351, "r": 0.8, "t": "produit", "l": "Sundubu jjigae", "svg": false}, {"id": "i53", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-tteokbokki-japchae_NESuPBKOA.jpg", "w": 1024, "h": 1024, "r": 1.0, "t": "produit", "l": "Tteokbokki japchae", "svg": false}, {"id": "i54", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-donkaseu-chicken-katsu_ES1C0DZ5n.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "produit", "l": "Donkaseu chicken katsu", "svg": false}, {"id": "i55", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-dolsot-bibimbap_IOTi8HZ3h.jpg", "w": 1600, "h": 1067, "r": 1.5, "t": "produit", "l": "Dolsot bibimbap", "svg": false}, {"id": "i56", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-soju-kimchi_iftK5-FZi.jpg", "w": 1024, "h": 1024, "r": 1.0, "t": "univers", "l": "Soju kimchi", "svg": false}, {"id": "i57", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-rituel-soju_S962dtCPh.jpg", "w": 1344, "h": 1344, "r": 1.0, "t": "univers", "l": "Rituel soju", "svg": false}, {"id": "i58", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-salle-odeon_1NWElHpE3.jpg", "w": 1188, "h": 792, "r": 1.5, "t": "univers", "l": "Salle odeon", "svg": false}, {"id": "i59", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-soju-bar-odeon_Bk73QnEKs.jpg", "w": 1600, "h": 1067, "r": 1.5, "t": "univers", "l": "Soju bar odeon", "svg": false}, {"id": "i60", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-kimchi-banchan_7DVGwCZc2.jpg", "w": 1600, "h": 1600, "r": 1.0, "t": "produit", "l": "Kimchi banchan", "svg": false}, {"id": "i61", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-table-dressee_6Vc0cYzQY.jpg", "w": 1273, "h": 849, "r": 1.499, "t": "produit", "l": "Table dressee", "svg": false}, {"id": "i62", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-cite-table_ryrnlu4NM.jpg", "w": 1600, "h": 1067, "r": 1.5, "t": "produit", "l": "Cite table", "svg": false}, {"id": "i63", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-odeon-table-01_VqdNQKget.jpg", "w": 1382, "h": 922, "r": 1.499, "t": "produit", "l": "Odeon table 01", "svg": false}, {"id": "i64", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-odeon-table-02_0OKUpaStf.jpg", "w": 1440, "h": 960, "r": 1.5, "t": "produit", "l": "Odeon table 02", "svg": false}, {"id": "i65", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-odeon-ambiance_X9XcvlmOS.jpg", "w": 1440, "h": 960, "r": 1.5, "t": "univers", "l": "Odeon ambiance", "svg": false}, {"id": "i66", "b": "comptoir-coreen", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/comptoir-coreen/comptoir-coreen-gobelins_wzUt3y9Rl.jpg", "w": 1286, "h": 854, "r": 1.506, "t": "univers", "l": "Gobelins", "svg": false}], "presets": {"portrait": {"cols": 12, "rows": 8, "aspect": "13.5/8", "layouts": {"piliers": {"nom": "Deux piliers", "slots": [[1, 1, 4, 8], [5, 1, 2, 4], [7, 1, 2, 4], [5, 5, 2, 4], [7, 5, 2, 4], [9, 1, 4, 8]]}, "alterne": {"nom": "Rythme alterné", "slots": [[1, 1, 4, 8], [5, 1, 2, 4], [5, 5, 2, 4], [7, 1, 4, 8], [11, 1, 2, 4], [11, 5, 2, 4]]}, "triptyque": {"nom": "Triptyque", "slots": [[1, 1, 4, 8], [5, 1, 4, 8], [9, 1, 4, 8]]}, "dense": {"nom": "Grande + 8", "slots": [[1, 1, 4, 8], [5, 1, 2, 4], [7, 1, 2, 4], [9, 1, 2, 4], [11, 1, 2, 4], [5, 5, 2, 4], [7, 5, 2, 4], [9, 5, 2, 4], [11, 5, 2, 4]]}}}, "paysage": {"cols": 12, "rows": 6, "aspect": "3/2", "layouts": {"piliers": {"nom": "Grande + 5", "slots": [[1, 1, 8, 4], [9, 1, 4, 2], [9, 3, 4, 2], [1, 5, 4, 2], [5, 5, 4, 2], [9, 5, 4, 2]]}, "dense": {"nom": "Neuf égales", "slots": [[1, 1, 4, 2], [5, 1, 4, 2], [9, 1, 4, 2], [1, 3, 4, 2], [5, 3, 4, 2], [9, 3, 4, 2], [1, 5, 4, 2], [5, 5, 4, 2], [9, 5, 4, 2]]}}}}, "brands": [{"k": "neko-ramen", "nom": "Neko Ramen", "accent": "#E5523C", "fam": "portrait", "layout": "piliers", "sur": "01 — Ramen japonais · Paris 9e", "accroche": "NEKO RAMEN — la pointure parisienne", "pitch": "Neko Ramen, c'est la cantine japonaise qu'on aurait rêvée à Tokyo, à deux pas des Grands Boulevards. Aux manettes, Sedrik Allani, chef français ramen addict formé à l'école Rajuku au Japon. Bouillons longuement mijotés, shoyu, tonkotsu, chashu fondant et yaki soba : la pointure du ramen parisien.", "src": "@nekoramen_paris · nekoramen.fr", "sel": ["i4", "i3", "i13", "i0", "i12", "i11"]}, {"k": "la-taverne-de-zhao", "nom": "La Taverne De ZHAO", "accent": "#E0A43B", "fam": "portrait", "layout": "dense", "sur": "02 — Cuisine de Xi'an · 12 adresses", "accroche": "LA TAVERNE DE ZHAO — la cuisine de Xi'an", "pitch": "Depuis 2011 et le Canal Saint-Martin, La Taverne De ZHAO fait entendre la cuisine de Xi'an à Paris. Douze adresses plus tard, la recette n'a pas bougé : des BiangBiang tirés main, des Mo dorés, des mijotés qui prennent des heures. Le Shaanxi, sans chichis.", "src": "@latavernedezhao · zhaogroupe.com", "sel": ["i41", "i38", "i42", "i43", "i46", "i47", "i44", "i48", "i49"]}, {"k": "comptoir-coreen", "nom": "Comptoir Coréen", "accent": "#6FAF9B", "fam": "paysage", "layout": "piliers", "sur": "03 — Bistrot coréen · Paris 6e, 13e, 14e", "accroche": "COMPTOIR CORÉEN — le bistrot coréen de Paris", "pitch": "Le Comptoir Coréen, c'est le bistrot coréen comme on l'aime : convivial, chaleureux, sans chichis. Dolsot bibimbap servi brûlant dans sa pierre, jeyuk bokkeum grillé, tteokbokki et japchae à partager, et une carte d'alcools coréens unique à Paris. Geonbae.", "src": "@comptoir.coreen · comptoircoreen.fr", "sel": ["i55", "i65", "i62", "i61", "i63", "i51"]}]};
+let state = {};
+function initState(){ D.brands.forEach(b=>{ state[b.k] = {layout:b.layout, sel:b.sel.slice()}; }); }
+function slots(b){ return D.presets[b.fam].layouts[state[b.k].layout].slots; }
+function thumb(u,w){ return u.endsWith('.svg') ? u : u+'?tr=w-'+w+',q-80'; }
+function byId(id){ return D.pool.find(p=>p.id===id); }
+function ar(s){ const [a,b]=s.split('/'); return parseFloat(a)/parseFloat(b); }
+
+function render(){
+  const root = document.getElementById('boards'); root.innerHTML='';
+  D.brands.forEach(b=>{
+    const st = state[b.k], fam = D.presets[b.fam], sl = slots(b);
+    const s = document.createElement('section'); s.className='brand';
+    const btns = Object.entries(fam.layouts).map(([k,v])=>
+      `<button class="${k===st.layout?'on':''}" onclick="setLayout('${b.k}','${k}')">${v.nom} · ${v.slots.length}</button>`).join('');
+    s.innerHTML = `<div class="hd">
+        <div><div class="sur" style="color:${b.accent}">${b.sur}</div>
+        <h2 class="bn" style="color:${b.accent}">${b.nom}</h2>
+        <p class="acc" style="color:${b.accent}">${b.accroche}</p></div>
+        <div><p class="pitch">${b.pitch}</p><p class="meta">Images : ${b.src}</p></div></div>
+      <div class="presets">${btns}</div>
+      <div class="board" id="bd-${b.k}"></div>`;
+    root.appendChild(s);
+    const bd = s.querySelector('.board');
+    bd.style.gridTemplateColumns = `repeat(${fam.cols},1fr)`;
+    bd.style.gridTemplateRows = `repeat(${fam.rows},1fr)`;
+    bd.style.aspectRatio = fam.aspect;
+    sl.forEach((p,i)=>{
+      const id = st.sel[i], img = id?byId(id):null;
+      const d = document.createElement('div');
+      d.className = 'slot' + (img && img.svg ? ' contain':'');
+      d.style.gridColumn = `${p[0]} / span ${p[2]}`;
+      d.style.gridRow = `${p[1]} / span ${p[3]}`;
+      d.onclick = ()=>openDrawer(b.k,i,p);
+      d.innerHTML = img ? `<img src="${thumb(img.u,900)}" alt="${img.l}" onerror="this.style.display='none'"><span class="cap">${img.l}</span>` : `<span class="cap">Vide</span>`;
+      bd.appendChild(d);
+    });
+  });
+  save();
+}
+function setLayout(bk,l){
+  const b = D.brands.find(x=>x.k===bk), st = state[bk];
+  const need = D.presets[b.fam].layouts[l].slots.length;
+  const pool = D.pool.filter(p=>p.b===bk);
+  while(st.sel.length < need){ const nxt = pool.find(p=>!st.sel.includes(p.id)); st.sel.push(nxt?nxt.id:null); }
+  st.layout = l; render();
+}
+let cur = null;
+function openDrawer(bk,i,pos){
+  cur = {bk,i};
+  const b = D.brands.find(x=>x.k===bk);
+  const fam = D.presets[b.fam];
+  const target = (pos[2]/fam.cols) / (pos[3]/fam.rows) * ar(fam.aspect);
+  document.getElementById('dt').textContent = 'Remplacer — ' + b.nom;
+  document.getElementById('dp').textContent = 'Format de la tuile : ' + (target<0.8?'portrait':target>1.2?'paysage':'carré') + ' · les mieux adaptés en premier';
+  drawCands(target);
+  document.getElementById('drawer').classList.add('open');
+}
+let filt = 'tous';
+function drawCands(target){
+  const b = D.brands.find(x=>x.k===cur.bk), st = state[cur.bk];
+  const fam = D.presets[b.fam];
+  const pos = fam.layouts[st.layout].slots[cur.i];
+  const t = target !== undefined ? target : (pos[2]/fam.cols)/(pos[3]/fam.rows)*ar(fam.aspect);
+  const fl = document.getElementById('dfilters');
+  fl.innerHTML = ['tous','produit','univers','identite'].map(f=>
+    `<button class="${f===filt?'on':''}" onclick="filt='${f}';drawCands(${t})">${f}</button>`).join('');
+  let list = D.pool.filter(p=>p.b===cur.bk && (filt==='tous'||p.t===filt));
+  list.sort((a,c)=>Math.abs(Math.log(a.r/t))-Math.abs(Math.log(c.r/t)));
+  const g = document.getElementById('dgrid'); g.innerHTML='';
+  list.forEach(p=>{
+    const used = st.sel.includes(p.id);
+    const off = Math.abs(Math.log(p.r/t)) > 0.25;
+    const d = document.createElement('div');
+    d.className = 'cand'+(used?' used':'')+(off?' warn':'');
+    d.innerHTML = `<img loading="lazy" src="${thumb(p.u,260)}" alt="${p.l}" onerror="this.style.display='none'">
+      <span class="fmt">${p.r<0.8?'9:16':p.r>1.2?'3:2':'1:1'}</span><span class="n">${p.l}</span>`;
+    d.onclick = ()=>{ st.sel[cur.i] = p.id; closeDrawer(); render(); };
+    g.appendChild(d);
+  });
+}
+function closeDrawer(){ document.getElementById('drawer').classList.remove('open'); }
+function recipe(){
+  return D.brands.map(b=>{
+    const st = state[b.k];
+    return b.nom + '\n  schema: ' + st.layout + '\n' + st.sel.map((id,i)=>{
+      const p = id?byId(id):null; return '  ' + (i+1) + '. ' + (p ? p.l + '  [' + p.u.split('/').pop() + ']' : '(vide)');
+    }).join('\n');
+  }).join('\n\n');
+}
+function save(){
+  document.getElementById('out').value = recipe();
+  try{ location.hash = btoa(unescape(encodeURIComponent(JSON.stringify(state)))); }catch(e){}
+}
+function load(){
+  initState();
+  if(location.hash.length>3){
+    try{ const s = JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(1))))); if(s && Object.keys(s).length) state = s; }catch(e){}
+  }
+}
+function reset(){ location.hash=''; initState(); render(); }
+function copyOut(){ const t=document.getElementById('out'); t.select(); document.execCommand('copy'); }
+load(); render();
+</script></body></html>
