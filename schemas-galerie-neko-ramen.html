@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schémas de galerie — Neko Ramen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#16130F;--surface:#211C16;--line:#332C23;--paper:#F2EDE4;--muted:#9C9284;--accent:#E5523C}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ink);color:var(--paper);font-family:"Inter",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  header.top{padding:64px 0 34px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin:0 0 18px}
+  h1{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(30px,5vw,48px);line-height:1.05;margin:0;max-width:20ch}
+  .lede{margin:20px 0 0;max-width:66ch;color:#CFC7B8;font-size:15.5px}
+
+  section{padding:52px 0;border-bottom:1px solid var(--line)}
+  .hd{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  .letter{font-family:"Fraunces",serif;font-size:34px;color:var(--accent);line-height:1}
+  h2{font-family:"Fraunces",serif;font-weight:400;font-size:26px;margin:0}
+  .count{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:4px 12px}
+  .why{color:#CFC7B8;font-size:14.5px;margin:0 0 26px;max-width:72ch}
+
+  /* GABARIT COMMUN — 12 colonnes x 8 rangees, meme silhouette pour les 4 schemas.
+     Une tuile 2col x 4rangees = 9:16 exact, donc aucun surzoom. */
+  .board{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(8,1fr);
+         aspect-ratio:13.5/8;gap:10px}
+  .c{position:relative;overflow:hidden;border-radius:10px;background:var(--surface);border:1px solid var(--line)}
+  .c img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .c.pad img{object-fit:contain;padding:14px;background:#0e0b08}
+  .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:10px;text-align:center;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .tag{position:absolute;left:7px;bottom:7px;z-index:2;font-size:9px;letter-spacing:.12em;text-transform:uppercase;background:rgba(0,0,0,.6);color:#fff;padding:3px 7px;border-radius:4px;opacity:0;transition:.2s}
+  .c:hover .tag{opacity:1}
+  .L{grid-column:span 4;grid-row:span 8}
+  .M{grid-column:span 3;grid-row:span 6}
+  .S{grid-column:span 2;grid-row:span 4}
+  @media(max-width:760px){
+    .board{grid-template-columns:repeat(4,1fr);grid-template-rows:none;grid-auto-rows:auto;aspect-ratio:auto}
+    .L,.M,.S{grid-column:span 2;grid-row:auto;aspect-ratio:9/16}
+  }
+  footer{padding:44px 0 90px;color:var(--muted);font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">MyFoodcourt · Neko Ramen · Schémas de galerie</p>
+    <h1>Quatre schémas, un seul gabarit.</h1>
+    <p class="lede">Les quatre planches ci-dessous occupent exactement le même rectangle — même largeur, même hauteur, même gouttière que les planches ZHAO et Comptoir Coréen. Seuls le nombre de photos et la hiérarchie changent. Chaque tuile respecte le format natif 9:16 : aucune photo n'est surzoomée. Dis-moi la lettre que tu retiens et je l'applique.</p>
+  </header>
+
+  <!-- A -->
+  <section>
+    <div class="hd"><span class="letter">A</span><h2>Triptyque</h2><span class="count">3 photos</span></div>
+    <p class="why">Le parti pris le plus fort. Trois images pleine hauteur, aucune hiérarchie interne, on lit la marque en trois temps : un plat spectaculaire, un plat signature, l'identité. Très éditorial, mais on perd la richesse de la carte.</p>
+    <div class="board">
+      <div class="c L"><span class="ph">Porc chashu flambé</span><span class="tag">Produit · porc chashu</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-porc-chashu_-rXf3KnVz.jpg?tr=w-900,q-80" alt="Porc chashu flambé" onerror="this.style.display='none'"></div>
+      <div class="c L"><span class="ph">Karaage curry</span><span class="tag">Produit · karaage curry</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-karaage-curry_aYrftYSHA.jpg?tr=w-900,q-80" alt="Karaage curry" onerror="this.style.display='none'"></div>
+      <div class="c L"><span class="ph">La maison</span><span class="tag">Univers · la maison</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-trois-adresses_9-X-QtvZm.jpg?tr=w-900,q-80" alt="Neko Ramen" onerror="this.style.display='none'"></div>
+    </div>
+  </section>
+
+  <!-- B -->
+  <section>
+    <div class="hd"><span class="letter">B</span><h2>Deux piliers</h2><span class="count">6 photos</span></div>
+    <p class="why">Deux grandes en flanc, quatre petites au centre. La lecture part du plat le plus spectaculaire, respire au centre, et se referme. C'est le schéma le plus proche de la silhouette des deux autres marques.</p>
+    <div class="board">
+      <div class="c L"><span class="ph">Porc chashu flambé</span><span class="tag">Produit · porc chashu</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-porc-chashu_-rXf3KnVz.jpg?tr=w-900,q-80" alt="Porc chashu flambé" onerror="this.style.display='none'"></div>
+      <div class="c S"><span class="ph">Shoyu ramen</span><span class="tag">Produit · shoyu ramen</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-shoyu-ramen_tzPRh6uES.jpg?tr=w-900,q-80" alt="Shoyu ramen" onerror="this.style.display='none'"></div>
+      <div class="c S"><span class="ph">Zaru soba</span><span class="tag">Produit · zaru soba</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-zaru-soba_Oaidt9vlM.jpg?tr=w-900,q-80" alt="Zaru soba" onerror="this.style.display='none'"></div>
+      <div class="c S pad"><span class="ph">Logo</span><span class="tag">Identité</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-logo_bZ_p5WoVt.png?tr=w-400,q-80" alt="Logo Neko Ramen" onerror="this.style.display='none'"></div>
+      <div class="c S"><span class="ph">Udon au yuzu</span><span class="tag">Produit · udon au yuzu</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-udon-yuzu_Tmfpa9sD_A.jpg?tr=w-900,q-80" alt="Udon au yuzu" onerror="this.style.display='none'"></div>
+      <div class="c L"><span class="ph">Karaage curry</span><span class="tag">Produit · karaage curry</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-karaage-curry_aYrftYSHA.jpg?tr=w-900,q-80" alt="Karaage curry" onerror="this.style.display='none'"></div>
+    </div>
+  </section>
+
+  <!-- C -->
+  <section>
+    <div class="hd"><span class="letter">C</span><h2>Rythme alterné</h2><span class="count">6 photos</span></div>
+    <p class="why">Grande, duo, grande, duo. Même densité que B mais une lecture qui avance au lieu de se refermer. Les petites tuiles servent de respiration entre deux plats forts.</p>
+    <div class="board">
+      <div class="c L"><span class="ph">Porc chashu flambé</span><span class="tag">Produit · porc chashu</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-porc-chashu_-rXf3KnVz.jpg?tr=w-900,q-80" alt="Porc chashu flambé" onerror="this.style.display='none'"></div>
+      <div class="c S"><span class="ph">Shoyu ramen</span><span class="tag">Produit · shoyu ramen</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-shoyu-ramen_tzPRh6uES.jpg?tr=w-900,q-80" alt="Shoyu ramen" onerror="this.style.display='none'"></div>
+      <div class="c S pad"><span class="ph">Logo</span><span class="tag">Identité</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-logo_bZ_p5WoVt.png?tr=w-400,q-80" alt="Logo Neko Ramen" onerror="this.style.display='none'"></div>
+      <div class="c L"><span class="ph">Karaage curry</span><span class="tag">Produit · karaage curry</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-karaage-curry_aYrftYSHA.jpg?tr=w-900,q-80" alt="Karaage curry" onerror="this.style.display='none'"></div>
+      <div class="c S"><span class="ph">Zaru soba</span><span class="tag">Produit · zaru soba</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-zaru-soba_Oaidt9vlM.jpg?tr=w-900,q-80" alt="Zaru soba" onerror="this.style.display='none'"></div>
+      <div class="c S"><span class="ph">En salle</span><span class="tag">Univers · en salle</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-ambiance-izakaya_Mn5VJzdki.jpg?tr=w-900,q-80" alt="En salle" onerror="this.style.display='none'"></div>
+    </div>
+  </section>
+
+  <!-- D -->
+  <section>
+    <div class="hd"><span class="letter">D</span><h2>Une grande, huit satellites</h2><span class="count">9 photos</span></div>
+    <p class="why">Le schéma le plus dense : on garde presque toute la sélection, mais une seule image domine et structure le bloc. À privilégier si tu veux montrer l'étendue de la carte à Arpège plutôt que faire une planche de direction artistique.</p>
+    <div class="board">
+      <div class="c L"><span class="ph">Porc chashu flambé</span><span class="tag">Produit · porc chashu</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-porc-chashu_-rXf3KnVz.jpg?tr=w-900,q-80" alt="Porc chashu flambé" onerror="this.style.display='none'"></div>
+      <div class="c S"><span class="ph">Shoyu ramen</span><span class="tag">Produit · shoyu ramen</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-shoyu-ramen_tzPRh6uES.jpg?tr=w-900,q-80" alt="Shoyu ramen" onerror="this.style.display='none'"></div>
+      <div class="c S"><span class="ph">Karaage curry</span><span class="tag">Produit · karaage curry</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-karaage-curry_aYrftYSHA.jpg?tr=w-900,q-80" alt="Karaage curry" onerror="this.style.display='none'"></div>
+      <div class="c S"><span class="ph">Zaru soba</span><span class="tag">Produit · zaru soba</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-zaru-soba_Oaidt9vlM.jpg?tr=w-900,q-80" alt="Zaru soba" onerror="this.style.display='none'"></div>
+      <div class="c S"><span class="ph">Udon au yuzu</span><span class="tag">Produit · udon au yuzu</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-udon-yuzu_Tmfpa9sD_A.jpg?tr=w-900,q-80" alt="Udon au yuzu" onerror="this.style.display='none'"></div>
+      <div class="c S pad"><span class="ph">Logo</span><span class="tag">Identité</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-logo_bZ_p5WoVt.png?tr=w-400,q-80" alt="Logo Neko Ramen" onerror="this.style.display='none'"></div>
+      <div class="c S"><span class="ph">Le geste</span><span class="tag">Univers · le geste</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-japan-expo_ZRv9khYQQz.jpg?tr=w-900,q-80" alt="Le geste" onerror="this.style.display='none'"></div>
+      <div class="c S"><span class="ph">En salle</span><span class="tag">Univers · en salle</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-ambiance-izakaya_Mn5VJzdki.jpg?tr=w-900,q-80" alt="En salle" onerror="this.style.display='none'"></div>
+      <div class="c S"><span class="ph">La maison</span><span class="tag">Univers · la maison</span><img loading="lazy" src="https://ik.imagekit.io/s5mu464sti/moodboards/neko-ramen/neko-ramen-trois-adresses_9-X-QtvZm.jpg?tr=w-900,q-80" alt="La maison" onerror="this.style.display='none'"></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Quatre schémas · gabarit commun 12 × 8 · tuile de base 9:16. Les visuels appartiennent à Neko Ramen (usage moodboard / direction artistique interne).</p>
+  </footer>
+</div>
+</body>
+</html>
