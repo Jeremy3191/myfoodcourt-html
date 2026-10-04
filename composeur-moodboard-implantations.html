@@ -39,7 +39,7 @@ button.pri{background:var(--accent);border-color:var(--accent);color:#fff;font-w
 #pool{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
 #pool h2{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:0 0 12px}
 #poolgrid{display:flex;flex-wrap:wrap;gap:8px}
-.pt{width:120px;height:90px;border-radius:7px;overflow:hidden;cursor:pointer;border:2px solid transparent;background:var(--surface)}
+.pt{position:relative;width:120px;height:90px;border-radius:7px;overflow:hidden;cursor:pointer;border:2px solid transparent;background:var(--surface)}
 .pt img{width:100%;height:100%;object-fit:cover;display:block}
 .pt:hover{border-color:var(--accent)}
 #drawer{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.66);display:none}
@@ -53,6 +53,7 @@ button.pri{background:var(--accent);border-color:var(--accent);color:#fff;font-w
 .dt:hover{border-color:var(--accent)}
 .dt .u{position:absolute;left:6px;top:6px;font-size:10.5px;background:rgba(0,0,0,.7);padding:2px 7px;border-radius:5px}
 .dt.used img{opacity:.55}
+.nw{position:absolute;right:6px;top:6px;z-index:2;font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);color:#fff;padding:2px 7px;border-radius:5px;font-weight:600}
 #rec{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:20px}
 #rec.on{display:flex}
 #recbox{background:var(--ink);border:1px solid var(--line);border-radius:12px;padding:20px;width:min(720px,100%);max-height:90vh;display:flex;flex-direction:column;gap:12px}
@@ -80,11 +81,12 @@ button.pri{background:var(--accent);border-color:var(--accent);color:#fff;font-w
 <div id="rec"><div id="recbox"><div style="display:flex;justify-content:space-between;align-items:center"><strong>Recette du tableau</strong><button id="rclose">Fermer</button></div><textarea id="rtxt" readonly></textarea><div style="display:flex;gap:10px"><button class="pri" id="rcopy">Copier</button><span id="rok" style="font-size:12px;color:var(--muted);align-self:center"></span></div></div></div>
 <script>
 var IK = 'https://ik.imagekit.io/s5mu464sti';
-var PHOTOS = [{"n": "maroc-tajine-poulet-decor.jpg", "w": 2000, "h": 1500, "t": "produit", "c": "Tajine de poulet & décor"}, {"n": "maroc-gueridon-menu-du-jour.jpg", "w": 1500, "h": 2000, "t": "univers", "c": "Guéridon & menu du jour"}, {"n": "maroc-tajine-bols-passe.jpg", "w": 2000, "h": 1500, "t": "produit", "c": "Tajines au passe"}, {"n": "afrique-service-passe-vitre.jpg", "w": 2000, "h": 1500, "t": "univers", "c": "Service au passe vitré"}, {"n": "afrique-poulet-yassa-wax.jpg", "w": 2000, "h": 1500, "t": "produit", "c": "Poulet yassa sur wax"}, {"n": "afrique-table-wax-cuisine.jpg", "w": 2000, "h": 1500, "t": "univers", "c": "Table wax & cuisine ouverte"}, {"n": "afrique-ecran-animation.jpg", "w": 2000, "h": 1500, "t": "univers", "c": "Écran d'animation"}, {"n": "afrique-totem-nappes-wax.jpg", "w": 1500, "h": 2000, "t": "univers", "c": "Totem & nappes wax"}, {"n": "mexique-plat-feuille-banane.jpg", "w": 1200, "h": 1600, "t": "produit", "c": "Plat en feuille de bananier"}, {"n": "japon-comptoir-sakura.jpg", "w": 1600, "h": 1200, "t": "univers", "c": "Comptoir fleuri"}, {"n": "popup-comptoir-equipe.jpg", "w": 1600, "h": 728, "t": "univers", "c": "Comptoir pop-up"}, {"n": "japon-equipe-ramen-marmites.jpg", "w": 1920, "h": 1080, "t": "univers", "c": "Équipe & marmites"}, {"n": "japon-bol-ramen.jpg", "w": 1500, "h": 2000, "t": "produit", "c": "Bol de ramen"}, {"n": "japon-chef-marmite.jpg", "w": 1500, "h": 2000, "t": "univers", "c": "Chef à la marmite"}, {"n": "mexique-vitrine-papel-picado.jpg", "w": 1920, "h": 1080, "t": "univers", "c": "Vitrine & guirlandes"}, {"n": "bol-lentilles-boeuf-houmous.jpg", "w": 1500, "h": 2000, "t": "produit", "c": "Bol lentilles, bœuf, houmous"}, {"n": "maroc-deco-comptoir.jpg", "w": 2000, "h": 1500, "t": "univers", "c": "Décor sur comptoir"}];
-var DEFAULT_ORDER = ["japon-equipe-ramen-marmites.jpg", "maroc-tajine-poulet-decor.jpg", "afrique-totem-nappes-wax.jpg", "mexique-plat-feuille-banane.jpg", "japon-comptoir-sakura.jpg", "afrique-poulet-yassa-wax.jpg", "bol-lentilles-boeuf-houmous.jpg", "popup-comptoir-equipe.jpg", "maroc-gueridon-menu-du-jour.jpg", "japon-bol-ramen.jpg", "mexique-vitrine-papel-picado.jpg", "afrique-service-passe-vitre.jpg", "maroc-tajine-bols-passe.jpg", "japon-chef-marmite.jpg", "afrique-table-wax-cuisine.jpg", "maroc-deco-comptoir.jpg", "afrique-ecran-animation.jpg"];
+var PHOTOS = [{"n": "maroc-tajine-poulet-decor.jpg", "w": 2000, "h": 1500, "t": "produit", "c": "Tajine de poulet & décor"}, {"n": "maroc-gueridon-menu-du-jour.jpg", "w": 1500, "h": 2000, "t": "univers", "c": "Guéridon & menu du jour"}, {"n": "maroc-tajine-bols-passe.jpg", "w": 2000, "h": 1500, "t": "produit", "c": "Tajines au passe"}, {"n": "afrique-service-passe-vitre.jpg", "w": 2000, "h": 1500, "t": "univers", "c": "Service au passe vitré"}, {"n": "afrique-poulet-yassa-wax.jpg", "w": 2000, "h": 1500, "t": "produit", "c": "Poulet yassa sur wax"}, {"n": "afrique-table-wax-cuisine.jpg", "w": 2000, "h": 1500, "t": "univers", "c": "Table wax & cuisine ouverte"}, {"n": "afrique-ecran-animation.jpg", "w": 2000, "h": 1500, "t": "univers", "c": "Écran d'animation"}, {"n": "afrique-totem-nappes-wax.jpg", "w": 1500, "h": 2000, "t": "univers", "c": "Totem & nappes wax"}, {"n": "mexique-plat-feuille-banane.jpg", "w": 1200, "h": 1600, "t": "produit", "c": "Plat en feuille de bananier"}, {"n": "japon-comptoir-sakura.jpg", "w": 1600, "h": 1200, "t": "univers", "c": "Comptoir fleuri"}, {"n": "popup-comptoir-equipe.jpg", "w": 1600, "h": 728, "t": "univers", "c": "Comptoir pop-up"}, {"n": "japon-equipe-ramen-marmites.jpg", "w": 1920, "h": 1080, "t": "univers", "c": "Équipe & marmites"}, {"n": "japon-bol-ramen.jpg", "w": 1500, "h": 2000, "t": "produit", "c": "Bol de ramen"}, {"n": "japon-chef-marmite.jpg", "w": 1500, "h": 2000, "t": "univers", "c": "Chef à la marmite"}, {"n": "mexique-vitrine-papel-picado.jpg", "w": 1920, "h": 1080, "t": "univers", "c": "Vitrine & guirlandes"}, {"n": "bol-lentilles-boeuf-houmous.jpg", "w": 1500, "h": 2000, "t": "produit", "c": "Bol lentilles, bœuf, houmous"}, {"n": "maroc-deco-comptoir.jpg", "w": 2000, "h": 1500, "t": "univers", "c": "Décor sur comptoir"}, {"n": "mexique-cuisine-papel-picado-chef.jpg", "w": 2000, "h": 910, "t": "univers", "c": "Cuisine ouverte & guirlandes", "nw": 1}];
+var DEFAULT_ORDER = ["afrique-table-wax-cuisine.jpg", "afrique-totem-nappes-wax.jpg", "afrique-service-passe-vitre.jpg", "japon-equipe-ramen-marmites.jpg", "japon-chef-marmite.jpg", "japon-bol-ramen.jpg", "maroc-deco-comptoir.jpg", "maroc-gueridon-menu-du-jour.jpg", "maroc-tajine-bols-passe.jpg", "popup-comptoir-equipe.jpg", "bol-lentilles-boeuf-houmous.jpg", "mexique-plat-feuille-banane.jpg", "mexique-vitrine-papel-picado.jpg"];
 var byName = {};
 PHOTOS.forEach(function(p){ byName[p.n] = p; });
-var st = { order: DEFAULT_ORDER.slice(), h: 300, g: 6, r: 6 };
+var DEF = {h:440,g:6,r:0};
+var st = { order: DEFAULT_ORDER.slice(), h: DEF.h, g: DEF.g, r: DEF.r };
 var board = document.getElementById('board');
 var dragName = null, swapIdx = -1;
 
@@ -139,7 +141,7 @@ function render(){
   if (!unused.length){ pg.innerHTML = '<span style="font-size:12.5px;color:var(--muted)">Toutes les photos sont dans le tableau.</span>'; }
   unused.forEach(function(p){
     var d = document.createElement('div'); d.className = 'pt'; d.title = 'Ajouter : ' + p.c; d.dataset.n = p.n;
-    d.innerHTML = '<img src="' + url(p.n, 320) + '" alt="' + p.c + '">'; pg.appendChild(d);
+    d.innerHTML = '<img src="' + url(p.n, 320) + '" alt="' + p.c + '">' + (p.nw ? '<span class="nw">Nouveau</span>' : ''); pg.appendChild(d);
   });
   save();
 }
@@ -148,7 +150,7 @@ function save(){ try { location.hash = btoa(unescape(encodeURIComponent(JSON.str
 function load(){
   try {
     var s = JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(1)))));
-    if (s && s.order){ st.order = s.order.filter(function(n){ return byName[n]; }); st.h = s.h || 300; st.g = s.g != null ? s.g : 6; st.r = s.r != null ? s.r : 6; }
+    if (s && s.order){ st.order = s.order.filter(function(n){ return byName[n]; }); st.h = s.h || DEF.h; st.g = s.g != null ? s.g : DEF.g; st.r = s.r != null ? s.r : DEF.r; }
   } catch(e){}
 }
 function sync(){
@@ -182,7 +184,7 @@ function openDrawer(i){
     if (p.n === st.order[i]) return;
     var pos = st.order.indexOf(p.n), d = document.createElement('div');
     d.className = 'dt' + (pos >= 0 ? ' used' : ''); d.dataset.n = p.n;
-    d.innerHTML = '<img src="' + url(p.n, 480) + '" alt="' + p.c + '">' + (pos >= 0 ? '<span class="u">n° ' + (pos + 1) + '</span>' : '<span class="u">libre</span>');
+    d.innerHTML = '<img src="' + url(p.n, 480) + '" alt="' + p.c + '">' + (pos >= 0 ? '<span class="u">n° ' + (pos + 1) + '</span>' : '<span class="u">libre</span>') + (p.nw ? '<span class="nw">Nouveau</span>' : '');
     g.appendChild(d);
   });
   document.getElementById('drawer').classList.add('on');
@@ -198,7 +200,7 @@ document.getElementById('drawer').addEventListener('click', function(e){ if (e.t
 document.getElementById('poolgrid').addEventListener('click', function(e){ var d = e.target.closest('.pt'); if (!d) return; st.order.push(d.dataset.n); render(); });
 
 ['h', 'g', 'r'].forEach(function(id){ document.getElementById(id).addEventListener('input', function(){ st[id] = +this.value; sync(); render(); }); });
-document.getElementById('reset').onclick = function(){ st.order = DEFAULT_ORDER.slice(); st.h = 300; st.g = 6; st.r = 6; sync(); render(); };
+document.getElementById('reset').onclick = function(){ st.order = DEFAULT_ORDER.slice(); st.h = DEF.h; st.g = DEF.g; st.r = DEF.r; sync(); render(); };
 document.getElementById('rnd').onclick = function(){ var a = st.order.slice(); for (var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } st.order = a; render(); };
 document.getElementById('exp').onclick = function(){
   var L = ['Moodboard implantations', '  hauteur: ' + st.h + ' | ecart: ' + st.g + ' | arrondi: ' + st.r, '  ordre (' + st.order.length + ' photos) :'];
