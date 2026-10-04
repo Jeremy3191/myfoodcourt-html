@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moodboard implantations &middot; MyFoodcourt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#16130F;--surface:#211C16;--line:#332C23;--paper:#F2EDE4;--muted:#9C9284;--accent:#E5523C;--gap:6px}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ink);color:var(--paper);font-family:"Inter",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  header.top{padding:76px 0 40px}
+  .eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin:0 0 20px}
+  h1{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(34px,6vw,60px);line-height:1.02;margin:0;max-width:18ch}
+  h1 em{font-style:italic;color:var(--accent)}
+  .lede{margin:24px 0 0;max-width:62ch;color:#CFC7B8;font-size:16px}
+  .board{padding-bottom:20px}
+  .row{display:flex;gap:var(--gap)}
+  .row+.row{margin-top:var(--gap)}
+  .cell{margin:0;position:relative;overflow:hidden;border-radius:6px;background:var(--surface);min-width:0}
+  .cell img{display:block;width:100%;height:auto;transition:transform .6s ease}
+  .cell:hover img{transform:scale(1.03)}
+  footer{padding:40px 0 90px;color:var(--muted);font-size:12.5px}
+  footer strong{color:var(--paper);font-weight:600}
+  @media(max-width:700px){.wrap{padding:0 16px}header.top{padding:48px 0 28px}
+    .row{display:contents}.board{column-count:2;column-gap:var(--gap)}.cell{margin-bottom:var(--gap);break-inside:avoid}}
+  @media(prefers-reduced-motion:reduce){.cell img{transition:none}.cell:hover img{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <p class="eyebrow">MyFoodcourt &middot; Moodboard &middot; Implantations</p>
+    <h1>Un restaurateur, un comptoir, <em>un voyage</em>.</h1>
+    <p class="lede">MyFoodcourt orchestre l&rsquo;arriv&eacute;e de restaurateurs commerciaux au c&oelig;ur de la restauration collective. Sur le comptoir d&rsquo;un site, une maison invit&eacute;e installe sa cuisine, son d&eacute;cor et son &eacute;quipe : les convives voyagent le temps d&rsquo;un d&eacute;jeuner, l&rsquo;op&eacute;rateur enrichit son offre. Quelques implantations, en images.</p>
+  </header>
+  <main class="board">
+    <div class="row">
+      <figure class="cell" style="flex:1.7778 1 0"><img loading="lazy" width="1920" height="1080" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/japon-equipe-ramen-marmites.jpg?tr=w-1400,q-82" alt="Équipe &amp; marmites" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/maroc-tajine-poulet-decor.jpg?tr=w-1400,q-82" alt="Tajine de poulet &amp; décor" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:0.7500 1 0"><img loading="lazy" width="1500" height="2000" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/afrique-totem-nappes-wax.jpg?tr=w-1400,q-82" alt="Totem &amp; nappes wax" onerror="this.style.display='none'"></figure>
+    </div>
+    <div class="row">
+      <figure class="cell" style="flex:0.7500 1 0"><img loading="lazy" width="1200" height="1600" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/mexique-plat-feuille-banane.jpg?tr=w-1400,q-82" alt="Plat en feuille de bananier" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="1600" height="1200" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/japon-comptoir-sakura.jpg?tr=w-1400,q-82" alt="Comptoir fleuri" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/afrique-poulet-yassa-wax.jpg?tr=w-1400,q-82" alt="Poulet yassa sur wax" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:0.7500 1 0"><img loading="lazy" width="1500" height="2000" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/bol-lentilles-boeuf-houmous.jpg?tr=w-1400,q-82" alt="Bol lentilles, bœuf, houmous" onerror="this.style.display='none'"></figure>
+    </div>
+    <div class="row">
+      <figure class="cell" style="flex:2.1978 1 0"><img loading="lazy" width="1600" height="728" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/popup-comptoir-equipe.jpg?tr=w-1400,q-82" alt="Comptoir pop-up" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:0.7500 1 0"><img loading="lazy" width="1500" height="2000" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/maroc-gueridon-menu-du-jour.jpg?tr=w-1400,q-82" alt="Guéridon &amp; menu du jour" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:0.7500 1 0"><img loading="lazy" width="1500" height="2000" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/japon-bol-ramen.jpg?tr=w-1400,q-82" alt="Bol de ramen" onerror="this.style.display='none'"></figure>
+    </div>
+    <div class="row">
+      <figure class="cell" style="flex:1.7778 1 0"><img loading="lazy" width="1920" height="1080" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/mexique-vitrine-papel-picado.jpg?tr=w-1400,q-82" alt="Vitrine &amp; guirlandes" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/afrique-service-passe-vitre.jpg?tr=w-1400,q-82" alt="Service au passe vitré" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/maroc-tajine-bols-passe.jpg?tr=w-1400,q-82" alt="Tajines au passe" onerror="this.style.display='none'"></figure>
+    </div>
+    <div class="row">
+      <figure class="cell" style="flex:0.7500 1 0"><img loading="lazy" width="1500" height="2000" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/japon-chef-marmite.jpg?tr=w-1400,q-82" alt="Chef à la marmite" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/afrique-table-wax-cuisine.jpg?tr=w-1400,q-82" alt="Table wax &amp; cuisine ouverte" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/maroc-deco-comptoir.jpg?tr=w-1400,q-82" alt="Décor sur comptoir" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/afrique-ecran-animation.jpg?tr=w-1400,q-82" alt="Écran d&#x27;animation" onerror="this.style.display='none'"></figure>
+    </div>
+  </main>
+  <footer>
+    <p><strong>Moodboard MyFoodcourt</strong> &mdash; 17 visuels. Les visuels appartiennent &agrave; leurs maisons respectives (usage moodboard / direction artistique interne).</p>
+  </footer>
+</div>
+</body>
+</html>
