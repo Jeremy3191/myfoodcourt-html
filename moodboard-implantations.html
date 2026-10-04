@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#16130F;--surface:#211C16;--line:#332C23;--paper:#F2EDE4;--muted:#9C9284;--accent:#E5523C;--gap:6px}
+  :root{--ink:#16130F;--surface:#211C16;--line:#332C23;--paper:#F2EDE4;--muted:#9C9284;--accent:#E5523C;--gap:6px;--rad:0px}
   *{box-sizing:border-box}
   body{margin:0;background:var(--ink);color:var(--paper);font-family:"Inter",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
   .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
@@ -20,7 +20,7 @@
   .board{padding-bottom:20px}
   .row{display:flex;gap:var(--gap)}
   .row+.row{margin-top:var(--gap)}
-  .cell{margin:0;position:relative;overflow:hidden;border-radius:6px;background:var(--surface);min-width:0}
+  .cell{margin:0;position:relative;overflow:hidden;border-radius:var(--rad);background:var(--surface);min-width:0}
   .cell img{display:block;width:100%;height:auto;transition:transform .6s ease}
   .cell:hover img{transform:scale(1.03)}
   footer{padding:40px 0 90px;color:var(--muted);font-size:12.5px}
@@ -39,35 +39,36 @@
   </header>
   <main class="board">
     <div class="row">
-      <figure class="cell" style="flex:1.7778 1 0"><img loading="lazy" width="1920" height="1080" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/japon-equipe-ramen-marmites.jpg?tr=w-1400,q-82" alt="Équipe &amp; marmites" onerror="this.style.display='none'"></figure>
-      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/maroc-tajine-poulet-decor.jpg?tr=w-1400,q-82" alt="Tajine de poulet &amp; décor" onerror="this.style.display='none'"></figure>
-      <figure class="cell" style="flex:0.7500 1 0"><img loading="lazy" width="1500" height="2000" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/afrique-totem-nappes-wax.jpg?tr=w-1400,q-82" alt="Totem &amp; nappes wax" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/afrique-table-wax-cuisine.jpg?tr=w-1400,q-82" alt="Table wax &amp; cuisine ouverte" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:0.7505 1 0"><img loading="lazy" width="1501" height="2000" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/afrique-totem-menu-yassa-wax.jpg?tr=w-1400,q-82" alt="Totem &amp; nappes wax (nouvelle version)" onerror="this.style.display='none'"></figure>
     </div>
     <div class="row">
-      <figure class="cell" style="flex:0.7500 1 0"><img loading="lazy" width="1200" height="1600" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/mexique-plat-feuille-banane.jpg?tr=w-1400,q-82" alt="Plat en feuille de bananier" onerror="this.style.display='none'"></figure>
-      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="1600" height="1200" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/japon-comptoir-sakura.jpg?tr=w-1400,q-82" alt="Comptoir fleuri" onerror="this.style.display='none'"></figure>
-      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/afrique-poulet-yassa-wax.jpg?tr=w-1400,q-82" alt="Poulet yassa sur wax" onerror="this.style.display='none'"></figure>
-      <figure class="cell" style="flex:0.7500 1 0"><img loading="lazy" width="1500" height="2000" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/bol-lentilles-boeuf-houmous.jpg?tr=w-1400,q-82" alt="Bol lentilles, bœuf, houmous" onerror="this.style.display='none'"></figure>
-    </div>
-    <div class="row">
-      <figure class="cell" style="flex:2.1978 1 0"><img loading="lazy" width="1600" height="728" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/popup-comptoir-equipe.jpg?tr=w-1400,q-82" alt="Comptoir pop-up" onerror="this.style.display='none'"></figure>
-      <figure class="cell" style="flex:0.7500 1 0"><img loading="lazy" width="1500" height="2000" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/maroc-gueridon-menu-du-jour.jpg?tr=w-1400,q-82" alt="Guéridon &amp; menu du jour" onerror="this.style.display='none'"></figure>
-      <figure class="cell" style="flex:0.7500 1 0"><img loading="lazy" width="1500" height="2000" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/japon-bol-ramen.jpg?tr=w-1400,q-82" alt="Bol de ramen" onerror="this.style.display='none'"></figure>
-    </div>
-    <div class="row">
-      <figure class="cell" style="flex:1.7778 1 0"><img loading="lazy" width="1920" height="1080" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/mexique-vitrine-papel-picado.jpg?tr=w-1400,q-82" alt="Vitrine &amp; guirlandes" onerror="this.style.display='none'"></figure>
       <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/afrique-service-passe-vitre.jpg?tr=w-1400,q-82" alt="Service au passe vitré" onerror="this.style.display='none'"></figure>
-      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/maroc-tajine-bols-passe.jpg?tr=w-1400,q-82" alt="Tajines au passe" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:1.7778 1 0"><img loading="lazy" width="1920" height="1080" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/japon-equipe-ramen-marmites.jpg?tr=w-1400,q-82" alt="Équipe &amp; marmites" onerror="this.style.display='none'"></figure>
     </div>
     <div class="row">
       <figure class="cell" style="flex:0.7500 1 0"><img loading="lazy" width="1500" height="2000" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/japon-chef-marmite.jpg?tr=w-1400,q-82" alt="Chef à la marmite" onerror="this.style.display='none'"></figure>
-      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/afrique-table-wax-cuisine.jpg?tr=w-1400,q-82" alt="Table wax &amp; cuisine ouverte" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:0.7500 1 0"><img loading="lazy" width="1500" height="2000" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/japon-bol-ramen.jpg?tr=w-1400,q-82" alt="Bol de ramen" onerror="this.style.display='none'"></figure>
       <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/maroc-deco-comptoir.jpg?tr=w-1400,q-82" alt="Décor sur comptoir" onerror="this.style.display='none'"></figure>
-      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/afrique-ecran-animation.jpg?tr=w-1400,q-82" alt="Écran d&#x27;animation" onerror="this.style.display='none'"></figure>
+    </div>
+    <div class="row">
+      <figure class="cell" style="flex:0.7505 1 0"><img loading="lazy" width="1501" height="2000" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/maroc-gueridon-the-menu.jpg?tr=w-1400,q-82" alt="Guéridon &amp; menu du jour (nouvelle version)" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:1.3333 1 0"><img loading="lazy" width="2000" height="1500" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/maroc-tajine-bols-passe.jpg?tr=w-1400,q-82" alt="Tajines au passe" onerror="this.style.display='none'"></figure>
+    </div>
+    <div class="row">
+      <figure class="cell" style="flex:2.1978 1 0"><img loading="lazy" width="1600" height="728" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/popup-comptoir-equipe.jpg?tr=w-1400,q-82" alt="Comptoir pop-up" onerror="this.style.display='none'"></figure>
+    </div>
+    <div class="row">
+      <figure class="cell" style="flex:0.7500 1 0"><img loading="lazy" width="1500" height="2000" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/bol-lentilles-boeuf-houmous.jpg?tr=w-1400,q-82" alt="Bol lentilles, bœuf, houmous" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:2.1978 1 0"><img loading="lazy" width="2000" height="910" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/mexique-cuisine-papel-picado-chef.jpg?tr=w-1400,q-82" alt="Cuisine ouverte &amp; guirlandes" onerror="this.style.display='none'"></figure>
+    </div>
+    <div class="row">
+      <figure class="cell" style="flex:0.7500 1 0"><img loading="lazy" width="1200" height="1600" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/mexique-plat-feuille-banane.jpg?tr=w-1400,q-82" alt="Plat en feuille de bananier" onerror="this.style.display='none'"></figure>
+      <figure class="cell" style="flex:1.7778 1 0"><img loading="lazy" width="1920" height="1080" src="https://ik.imagekit.io/s5mu464sti/moodboards/implantations/mexique-vitrine-papel-picado.jpg?tr=w-1400,q-82" alt="Vitrine &amp; guirlandes" onerror="this.style.display='none'"></figure>
     </div>
   </main>
   <footer>
-    <p><strong>Moodboard MyFoodcourt</strong> &mdash; 17 visuels. Les visuels appartiennent &agrave; leurs maisons respectives (usage moodboard / direction artistique interne).</p>
+    <p><strong>Moodboard MyFoodcourt</strong> &mdash; 14 visuels. Les visuels appartiennent &agrave; leurs maisons respectives (usage moodboard / direction artistique interne).</p>
   </footer>
 </div>
 </body>
