@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Composeur de moodboard — Street food asiatique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16130F;--surface:#211C16;--line:#332C23;--paper:#F2EDE4;--muted:#9C9284}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:"Inter",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+header.top{padding:56px 0 28px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+h1{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(28px,5vw,44px);line-height:1.05;margin:0}
+.lede{margin:16px 0 0;max-width:64ch;color:#CFC7B8;font-size:15px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+button{font:inherit;font-size:12.5px;color:var(--paper);background:transparent;border:1px solid var(--line);border-radius:100px;padding:7px 15px;cursor:pointer;transition:.15s}
+button:hover{border-color:var(--paper)}
+button.on{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+section.brand{padding:48px 0;border-bottom:1px solid var(--line)}
+.hd{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:end;margin-bottom:20px}
+@media(max-width:820px){.hd{grid-template-columns:1fr;align-items:start}}
+.sur{font-size:12px;letter-spacing:.28em;text-transform:uppercase}
+.bn{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(26px,4.5vw,44px);line-height:1;margin:8px 0 0}
+.acc{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;margin:12px 0 0}
+.pitch{color:#CFC7B8;font-size:15px;margin:0}
+.meta{color:var(--muted);font-size:12px;margin:12px 0 0}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}
+.board{display:grid;gap:10px}
+.slot{position:relative;overflow:hidden;border-radius:10px;background:var(--surface);border:1px solid var(--line);cursor:pointer}
+.slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.slot.contain img{object-fit:contain;padding:14px;background:#0e0b08}
+.slot:hover img{transform:scale(1.03)}
+.slot:after{content:"Changer";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(10,8,6,.62);color:#fff;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:0;transition:.15s}
+.slot:hover:after{opacity:1}
+.slot .cap{position:absolute;left:7px;bottom:7px;z-index:3;font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(0,0,0,.6);padding:3px 7px;border-radius:4px;color:#fff}
+.slot.crop{outline:1px solid #8A4A2E;outline-offset:-1px}
+#drawer{position:fixed;top:0;right:0;height:100%;width:min(460px,94vw);background:#1B1712;border-left:1px solid var(--line);
+  transform:translateX(102%);transition:transform .25s;z-index:50;display:flex;flex-direction:column}
+#drawer.open{transform:none}
+.dh{padding:20px 20px 14px;border-bottom:1px solid var(--line);flex:0 0 auto}
+.dh h3{font-family:"Fraunces",serif;font-weight:400;font-size:20px;margin:0 0 4px}
+.dh p{margin:0;font-size:12px;color:var(--muted)}
+.filters{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+.dg{overflow-y:auto;padding:14px 20px 50px;column-count:2;column-gap:10px}
+.cand{position:relative;break-inside:avoid;margin:0 0 10px;border-radius:8px;overflow:hidden;
+  border:1px solid var(--line);background:var(--surface);cursor:pointer;display:block}
+.cand img{width:100%;height:auto;display:block}
+.cand:hover{border-color:var(--paper)}
+.cand.used{opacity:.34}
+.cand .n{position:absolute;left:0;right:0;bottom:0;font-size:9.5px;padding:14px 6px 5px;
+  background:linear-gradient(transparent,rgba(0,0,0,.88));color:#fff}
+.cand .fmt{position:absolute;right:5px;top:5px;font-size:8.5px;letter-spacing:.08em;background:rgba(0,0,0,.7);color:#fff;padding:2px 5px;border-radius:3px}
+.cand.warn .fmt{background:#8A4A2E}
+#close{position:absolute;top:14px;right:16px;z-index:2}
+#exp{padding:36px 0 90px}
+textarea{width:100%;height:170px;background:var(--surface);color:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px;font-family:ui-monospace,monospace;font-size:11.5px}
+footer{color:var(--muted);font-size:12px;padding-bottom:70px}
+</style></head><body>
+<div class="wrap">
+<header class="top">
+  <p class="eyebrow">MyFoodcourt · Composeur de moodboard · Street food asiatique</p>
+  <h1>Clique une photo pour la remplacer.</h1>
+  <p class="lede">Chaque planche pioche dans un vivier hébergé. Clique une tuile, choisis un remplaçant dans le tiroir, l'échange est immédiat. Les boutons sous chaque marque changent le schéma de la galerie. Quand c'est bon, exporte la recette en bas de page et colle-la-moi : je produis le moodboard final.</p>
+  <div class="bar"><button onclick="reset()">Réinitialiser</button><button onclick="document.getElementById('exp').scrollIntoView({behavior:'smooth'})">Exporter la recette</button></div>
+</header>
+<div id="boards"></div>
+<section id="exp">
+  <h3 style="font-family:Fraunces,serif;font-weight:400;font-size:22px;margin:0 0 6px">Recette</h3>
+  <p style="color:var(--muted);font-size:13px;margin:0 0 12px">Copie ce bloc et colle-le dans la conversation.</p>
+  <textarea id="out" readonly></textarea>
+  <div class="bar"><button onclick="copyOut()">Copier</button></div>
+</section>
+<footer>Vivier : 96 visuels hébergés sur ImageKit. Un liseré orange sur une tuile signale un recadrage important. Les images appartiennent aux maisons concernées (usage moodboard interne).</footer>
+</div>
+<aside id="drawer">
+  <button id="close" onclick="closeDrawer()">Fermer</button>
+  <div class="dh"><h3 id="dt">Remplacer</h3><p id="dp"></p><div class="filters" id="dfilters"></div></div>
+  <div class="dg" id="dgrid"></div>
+</aside>
+<script>
+const D = {"pool": [{"id": "i0", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DOdwYQ-CDda_4w_ZLlP7g.jpg", "w": 1440, "h": 1920, "r": 0.75, "t": "produit", "l": "Ig dodwyq cdda_4w"}, {"id": "i1", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DZJ70lHjf6__9Pj0G4uZM.jpg", "w": 1254, "h": 1254, "r": 1.0, "t": "produit", "l": "Ig dzj70lhjf6_"}, {"id": "i2", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DP4A0xNiDjK_hRHTEdKhd.jpg", "w": 1039, "h": 1385, "r": 0.75, "t": "produit", "l": "Ig dp4a0xnidjk"}, {"id": "i3", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DLH_f1YtPv1_Cq6wAepsf.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "univers", "l": "Ig dlh_f1ytpv1"}, {"id": "i4", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DOv821viLKl_rY-XqFlW0s.jpg", "w": 1080, "h": 1080, "r": 1.0, "t": "univers", "l": "Ig dov821vilkl"}, {"id": "i5", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DZ4gqzZDZHO_fvP4HgIHW.jpg", "w": 941, "h": 1254, "r": 0.75, "t": "produit", "l": "Ig dz4gqzzdzho"}, {"id": "i6", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DM0QpV_NFgF_zMlBPeL3U.jpg", "w": 1440, "h": 1920, "r": 0.75, "t": "produit", "l": "Ig dm0qpv_nfgf"}, {"id": "i7", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DZEwj3LjfEv_imoEFjwOr.jpg", "w": 1086, "h": 1448, "r": 0.75, "t": "produit", "l": "Ig dzewj3ljfev"}, {"id": "i8", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DQKCDbviE35_FUPKivOsB.jpg", "w": 1200, "h": 1500, "r": 0.8, "t": "univers", "l": "Ig dqkcdbvie35"}, {"id": "i9", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-Dahq6FYDe1Z_Fj5X8JHo37.jpg", "w": 1254, "h": 1254, "r": 1.0, "t": "produit", "l": "Ig dahq6fyde1z"}, {"id": "i10", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DYg1YoUjXq3_5kGxbYzO7.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "produit", "l": "Ig dyg1youjxq3"}, {"id": "i11", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DS7hWO2iOZ9_z1RBi-OyQ.jpg", "w": 828, "h": 1104, "r": 0.75, "t": "univers", "l": "Ig ds7hwo2ioz9"}, {"id": "i12", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/love-chakchouka_x2BgaG0SG.jpg", "w": 1320, "h": 1452, "r": 0.909, "t": "produit", "l": "Chakchouka"}, {"id": "i13", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/love-composition_H9oAFwB_n.jpg", "w": 1023, "h": 1279, "r": 0.8, "t": "produit", "l": "Composition_h9oafwb"}, {"id": "i14", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/love-1650-combinaisons_oxKHS7A23.jpg", "w": 1024, "h": 1365, "r": 0.75, "t": "produit", "l": "1650 combinaisons"}, {"id": "i15", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/love-cuisine_g8wtNVa6y.jpg", "w": 1022, "h": 1276, "r": 0.801, "t": "univers", "l": "Cuisine"}, {"id": "i16", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/love-incontournables_SeR7IS0Hy.jpg", "w": 1024, "h": 1365, "r": 0.75, "t": "produit", "l": "Incontournables"}, {"id": "i17", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/love-labne_SobASaDkW.jpg", "w": 1024, "h": 1365, "r": 0.75, "t": "produit", "l": "Labne"}, {"id": "i18", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/love-comptoir_urylMhuJU.jpg", "w": 1320, "h": 2347, "r": 0.562, "t": "univers", "l": "Comptoir"}, {"id": "i19", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/love-terrasse_6HU_aU2kf.jpg", "w": 1024, "h": 1365, "r": 0.75, "t": "univers", "l": "Terrasse_6hu"}, {"id": "i20", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/love-schnitzel_dXIbamg0f.jpg", "w": 650, "h": 1164, "r": 0.558, "t": "produit", "l": "Schnitzel"}, {"id": "i21", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-Ddqg2Z3Hz82_1CaEnbW4P.jpg", "w": 1024, "h": 1279, "r": 0.801, "t": "produit", "l": "Ig ddqg2z3hz82"}, {"id": "i22", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-DZ4oJcSjYp6_H7_lXR778.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "univers", "l": "Ig dz4ojcsjyp6_h7"}, {"id": "i23", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-DfjtQsqjTSI_1xt57LbdK.jpg", "w": 1024, "h": 1365, "r": 0.75, "t": "produit", "l": "Ig dfjtqsqjtsi"}, {"id": "i24", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-Dd03wOsjUL6_MogFC-JGsg.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "univers", "l": "Ig dd03wosjul6"}, {"id": "i25", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-DeeDwJbjeqe_GOgEV-a2HO.jpg", "w": 1024, "h": 1365, "r": 0.75, "t": "produit", "l": "Ig deedwjbjeqe"}, {"id": "i26", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-Dfra71Pjblu_qvGkHPkT8.jpg", "w": 1024, "h": 1365, "r": 0.75, "t": "produit", "l": "Ig dfra71pjblu"}, {"id": "i27", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-DakPpvbHdhL_8GJLss5a3.jpg", "w": 1023, "h": 1279, "r": 0.8, "t": "produit", "l": "Ig dakppvbhdhl"}, {"id": "i28", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-Dfo83qVjVxg_AHGEcXzhL5.jpg", "w": 1024, "h": 1365, "r": 0.75, "t": "produit", "l": "Ig dfo83qvjvxg"}, {"id": "i29", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-De_rIOcjS-x_lMAG9sBgqe.jpg", "w": 660, "h": 880, "r": 0.75, "t": "produit", "l": "Ig de_riocjs x"}, {"id": "i30", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-DachR0tgZJN_CGZjegabcO.jpg", "w": 1122, "h": 1401, "r": 0.801, "t": "produit", "l": "Ig dachr0tgzjn"}, {"id": "i31", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-DcarxQrjaRn_QiNmiKgvT7.jpg", "w": 1024, "h": 1365, "r": 0.75, "t": "produit", "l": "Ig dcarxqrjarn"}, {"id": "i32", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-DaS95cDDbMs_KnFh3DqTM.jpg", "w": 1024, "h": 1365, "r": 0.75, "t": "univers", "l": "Ig das95cddbms"}, {"id": "i33", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-Dc_DKpoNKNW_ms_-PMM9D.jpg", "w": 1024, "h": 1360, "r": 0.753, "t": "univers", "l": "Ig dc_dkponknw_ms"}, {"id": "i34", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-Df5Ewq4DUly_2mkkBG8DL.jpg", "w": 1320, "h": 1452, "r": 0.909, "t": "produit", "l": "Ig df5ewq4duly"}, {"id": "i35", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DXbo1jUjZrm_2vEYce9eg.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "produit", "l": "Ig dxbo1jujzrm"}, {"id": "i36", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-De9EIjWjZOX_OMn4OUT0nE.jpg", "w": 1290, "h": 1720, "r": 0.75, "t": "produit", "l": "Ig de9eijwjzox"}, {"id": "i37", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DbSPvpht3U9_A03I68opk6.jpg", "w": 1440, "h": 1920, "r": 0.75, "t": "univers", "l": "Ig dbspvpht3u9"}, {"id": "i38", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DY4KcVbNtsJ_-ZRvYOPIbP.jpg", "w": 1350, "h": 1687, "r": 0.8, "t": "produit", "l": "Ig dy4kcvbntsj"}, {"id": "i39", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DWWDxqXjsU-_GSFw9GHfc.jpg", "w": 1440, "h": 1800, "r": 0.8, "t": "produit", "l": "Ig dwwdxqxjsu"}, {"id": "i40", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DW5_YjeDVFs_cd0p1raWE.jpg", "w": 1440, "h": 1798, "r": 0.801, "t": "produit", "l": "Ig dw5_yjedvfs"}, {"id": "i41", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DakRuFlDeY8_7iFyaBJ6l.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "produit", "l": "Ig dakrufldey8"}, {"id": "i42", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DfCWLrxDLQf_TlU-WNQL9.jpg", "w": 3072, "h": 4096, "r": 0.75, "t": "univers", "l": "Ig dfcwlrxdlqf"}, {"id": "i43", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/logo_msQR_tQur.png", "w": 7084, "h": 2547, "r": 2.781, "t": "identite", "l": "Logo_msqr"}, {"id": "i44", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/mascotte_teND8qDGM.png", "w": 4500, "h": 4500, "r": 1.0, "t": "identite", "l": "Mascotte"}, {"id": "i45", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/site-wallpaper_-PxJD5KKY.jpg", "w": 2876, "h": 2137, "r": 1.346, "t": "produit", "l": "Site wallpaper"}, {"id": "i46", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/ig-DYowY72jPg9_imnp12yw38.jpg", "w": 1638, "h": 2048, "r": 0.8, "t": "univers", "l": "Ig dyowy72jpg9"}, {"id": "i47", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/ig-DZuR1IbCYMv_2h8ldJjpE.jpg", "w": 1638, "h": 2048, "r": 0.8, "t": "produit", "l": "Ig dzur1ibcymv"}, {"id": "i48", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/ig-DaATX3Zjf3L_kIdb6XJ_EQ.jpg", "w": 1638, "h": 2048, "r": 0.8, "t": "produit", "l": "Ig daatx3zjf3l_kidb6xj"}, {"id": "i49", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/ig-DY4NIl9iNvb_nSwuBkw26.jpg", "w": 1638, "h": 2048, "r": 0.8, "t": "univers", "l": "Ig dy4nil9invb"}, {"id": "i50", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/site-pasta-oro-26_TBx-1iIuq.webp", "w": 800, "h": 640, "r": 1.25, "t": "produit", "l": "Site pasta oro 26"}, {"id": "i51", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/site-pasta-oro-2_IKLHU1tzjT.webp", "w": 800, "h": 640, "r": 1.25, "t": "produit", "l": "Site pasta oro 2"}, {"id": "i52", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/site-pasta-oro-1_orSl6veejr.webp", "w": 800, "h": 640, "r": 1.25, "t": "produit", "l": "Site pasta oro 1"}, {"id": "i53", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/site-pasta-oro-30_s_TeHt4z_w.webp", "w": 800, "h": 640, "r": 1.25, "t": "produit", "l": "Site pasta oro 30_s_teht4z"}, {"id": "i54", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/site-pasta-oro-25_IX_mJ5NwlE.webp", "w": 800, "h": 640, "r": 1.25, "t": "produit", "l": "Site pasta oro 25_ix"}, {"id": "i55", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/site-seine-musicale_5t7JQ2H1V.webp", "w": 1024, "h": 593, "r": 1.727, "t": "univers", "l": "Site seine musicale"}, {"id": "i56", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/site-pizza_JGUpUtqWS.webp", "w": 582, "h": 483, "r": 1.205, "t": "produit", "l": "Site pizza"}, {"id": "i57", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/site-linguine_YlojYlL0d1.webp", "w": 758, "h": 604, "r": 1.255, "t": "produit", "l": "Site linguine"}, {"id": "i58", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/ig-DSmn_acj2mg_DT5PeqLBV.jpg", "w": 1638, "h": 2048, "r": 0.8, "t": "produit", "l": "Ig dsmn_acj2mg"}, {"id": "i59", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DMQEv24NDdA_zUmNzLTTw.jpg", "w": 1440, "h": 1913, "r": 0.753, "t": "produit", "l": "Ig dmqev24ndda"}, {"id": "i60", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/ig-DVQP4UYDQkv_EWJ6xuhuj.jpg", "w": 1638, "h": 2048, "r": 0.8, "t": "produit", "l": "Ig dvqp4uydqkv"}, {"id": "i61", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-DbaUUBsl98b_ZFU8cCL5A.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "produit", "l": "Ig dbauubsl98b"}, {"id": "i62", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/ig-DUp8h8GiBXG_-WpMNf2hO.jpg", "w": 1638, "h": 2048, "r": 0.8, "t": "produit", "l": "Ig dup8h8gibxg"}, {"id": "i63", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/ig-DUF5aGzicgc_AAz7Q3uSb.jpg", "w": 1638, "h": 2048, "r": 0.8, "t": "produit", "l": "Ig duf5agzicgc"}, {"id": "i64", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/ig-DT2cnFWDTV-_gJd0_f1WR.jpg", "w": 1638, "h": 2048, "r": 0.8, "t": "produit", "l": "Ig dt2cnfwdtv _gjd0"}, {"id": "i65", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/ig-DXeFVeRDbgP_6moAxo2FQ.jpg", "w": 1638, "h": 2048, "r": 0.8, "t": "produit", "l": "Ig dxefverdbgp"}, {"id": "i66", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/ig-DZJ6KzhjM3n_FZiAnVfoo.jpg", "w": 1638, "h": 2048, "r": 0.8, "t": "produit", "l": "Ig dzj6kzhjm3n"}, {"id": "i67", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-DZcJX3ek_QJ_RIC8lJipb.jpg", "w": 1122, "h": 1402, "r": 0.8, "t": "produit", "l": "Ig dzcjx3ek_qj"}, {"id": "i68", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-DZCZ4KRjVy__AfP6U2Cjkg.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "produit", "l": "Ig dzcz4krjvy_"}, {"id": "i69", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/ig-DPTYELADJDE_LwVrguZil.jpg", "w": 1638, "h": 2048, "r": 0.8, "t": "produit", "l": "Ig dptyeladjde"}, {"id": "i70", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-Da41_bCjUWC_tHVMaNfQM.jpg", "w": 1638, "h": 2047, "r": 0.8, "t": "produit", "l": "Ig da41_bcjuwc"}, {"id": "i71", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-DgK8kFqjaFQ_dFcHU-qCh.jpg", "w": 1080, "h": 1440, "r": 0.75, "t": "produit", "l": "Ig dgk8kfqjafq"}, {"id": "i72", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/ig-DQJcsuZASKL_Vz8aNMos5.jpg", "w": 1638, "h": 2048, "r": 0.8, "t": "produit", "l": "Ig dqjcsuzaskl"}, {"id": "i73", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/ig-DOvU8BLk3A3_LnYMBHl1Z.jpg", "w": 1638, "h": 2048, "r": 0.8, "t": "produit", "l": "Ig dovu8blk3a3"}, {"id": "i74", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DOoVNWGDdrm_0Re9CSPo2c.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "produit", "l": "Ig doovnwgddrm"}, {"id": "i75", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-DZFh2esjZ6u_N_FcO3Ydn.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "produit", "l": "Ig dzfh2esjz6u_n"}, {"id": "i76", "b": "pasta-oro", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/pasta-oro/ig-DQ_TnWWCZdd_RUEwcy52z7.jpg", "w": 1638, "h": 2048, "r": 0.8, "t": "produit", "l": "Ig dq_tnwwczdd"}, {"id": "i77", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DUF46Gfjd8Y_66RkcEAYeh.jpg", "w": 1440, "h": 1920, "r": 0.75, "t": "produit", "l": "Ig duf46gfjd8y"}, {"id": "i78", "b": "love", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/love/ig-DXoRnRSDfi9_fSD_PRA_Z.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "produit", "l": "Ig dxornrsdfi9_fsd_pra"}, {"id": "i79", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DUp8exQjZKm_bYFmQV0gJM.jpg", "w": 1440, "h": 1440, "r": 1.0, "t": "produit", "l": "Ig dup8exqjzkm"}, {"id": "i80", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DSpQuwwDWz8_wXCTFqJ9yj.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "produit", "l": "Ig dspquwwdwz8"}, {"id": "i81", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DUX3kGSDbhR_czJLuMPtT.jpg", "w": 1350, "h": 1687, "r": 0.8, "t": "produit", "l": "Ig dux3kgsdbhr"}, {"id": "i82", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DU-e3euDQBY_y3aw9l_l_.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "produit", "l": "Ig du e3eudqby_y3aw9l_l"}, {"id": "i83", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DRRw1ncjVAi_GfMXhP3ov.jpg", "w": 1080, "h": 1346, "r": 0.802, "t": "produit", "l": "Ig drrw1ncjvai"}, {"id": "i84", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DVOD97kjadS_IvYYTrTUSZ.jpg", "w": 1440, "h": 1800, "r": 0.8, "t": "produit", "l": "Ig dvod97kjads"}, {"id": "i85", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DSFyvpqjeRP_du3FJEGuS.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "produit", "l": "Ig dsfyvpqjerp"}, {"id": "i86", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DTNLGNEjLXc_oaU55UBSz.jpg", "w": 1350, "h": 1687, "r": 0.8, "t": "produit", "l": "Ig dtnlgnejlxc"}, {"id": "i87", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DQ9FYQOjbRk_dJ6GHlCQz.jpg", "w": 1350, "h": 1687, "r": 0.8, "t": "produit", "l": "Ig dq9fyqojbrk"}, {"id": "i88", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DTz26R4DeYK_0t5m2qAWQ.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "produit", "l": "Ig dtz26r4deyk"}, {"id": "i89", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DP0-aX2Dauk_U_xcjZzPr.jpg", "w": 1080, "h": 1350, "r": 0.8, "t": "produit", "l": "Ig dp0 ax2dauk_u"}, {"id": "i90", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DSXE8N-jcBT_HDfjFsjL3l.jpg", "w": 1024, "h": 1024, "r": 1.0, "t": "produit", "l": "Ig dsxe8n jcbt"}, {"id": "i91", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DOnlqfXDV29_XcQc8ccHh.jpg", "w": 1440, "h": 1825, "r": 0.789, "t": "produit", "l": "Ig donlqfxdv29"}, {"id": "i92", "b": "meurette", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/meurette/ig-DNfZTmvoSZY_tX6D14uT8.jpg", "w": 1440, "h": 1920, "r": 0.75, "t": "produit", "l": "Ig dnfztmvoszy"}, {"id": "i93", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DWCF0oCiA6E_YtkWQWhIw.jpg", "w": 1200, "h": 1200, "r": 1.0, "t": "produit", "l": "Ig dwcf0ocia6e"}, {"id": "i94", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DMkfU5Ot6kD_tPvcXanDBM.jpg", "w": 1440, "h": 1920, "r": 0.75, "t": "produit", "l": "Ig dmkfu5ot6kd"}, {"id": "i95", "b": "canting-club", "u": "https://ik.imagekit.io/s5mu464sti/moodboards/canting-club/ig-DKe6wXENsVw_OH3h3DcwL.jpg", "w": 1350, "h": 1688, "r": 0.8, "t": "produit", "l": "Ig dke6wxensvw"}], "layouts": {"p-piliers": {"nom": "Deux piliers", "cols": 12, "rows": 8, "aspect": "13.5/8", "slots": [[1, 1, 4, 8], [5, 1, 2, 4], [7, 1, 2, 4], [5, 5, 2, 4], [7, 5, 2, 4], [9, 1, 4, 8]]}, "p-alterne": {"nom": "Rythme alterne", "cols": 12, "rows": 8, "aspect": "13.5/8", "slots": [[1, 1, 4, 8], [5, 1, 2, 4], [5, 5, 2, 4], [7, 1, 4, 8], [11, 1, 2, 4], [11, 5, 2, 4]]}, "p-tript": {"nom": "Triptyque", "cols": 12, "rows": 8, "aspect": "13.5/8", "slots": [[1, 1, 4, 8], [5, 1, 4, 8], [9, 1, 4, 8]]}, "p-dense": {"nom": "Grande + 8", "cols": 12, "rows": 8, "aspect": "13.5/8", "slots": [[1, 1, 4, 8], [5, 1, 2, 4], [7, 1, 2, 4], [9, 1, 2, 4], [11, 1, 2, 4], [5, 5, 2, 4], [7, 5, 2, 4], [9, 5, 2, 4], [11, 5, 2, 4]]}, "l-grande5": {"nom": "Grande + 5", "cols": 12, "rows": 6, "aspect": "3/2", "slots": [[1, 1, 8, 4], [9, 1, 4, 2], [9, 3, 4, 2], [1, 5, 4, 2], [5, 5, 4, 2], [9, 5, 4, 2]]}, "l-neuf": {"nom": "Neuf egales", "cols": 12, "rows": 6, "aspect": "3/2", "slots": [[1, 1, 4, 2], [5, 1, 4, 2], [9, 1, 4, 2], [1, 3, 4, 2], [5, 3, 4, 2], [9, 3, 4, 2], [1, 5, 4, 2], [5, 5, 4, 2], [9, 5, 4, 2]]}, "mosaique": {"nom": "Mosaique", "cols": 4, "rows": 4, "rowH": 150, "slots": [[1, 1, 2, 2], [3, 1, 1, 1], [4, 1, 1, 1], [3, 2, 1, 1], [1, 3, 2, 1], [4, 2, 1, 1], [3, 3, 1, 1], [4, 3, 1, 1], [1, 4, 1, 1], [2, 4, 1, 1]]}, "mosaique-f": {"nom": "Mosaique fusionnee", "cols": 4, "rows": 4, "rowH": 150, "slots": [[1, 1, 2, 2], [3, 1, 1, 1], [4, 1, 1, 1], [3, 2, 1, 2], [1, 3, 2, 1], [4, 2, 1, 2], [1, 4, 1, 1], [2, 4, 1, 1]]}}, "brands": [{"k": "canting-club", "nom": "Canting Club", "accent": "#B8322A", "layouts": ["p-piliers", "p-alterne", "p-tript", "p-dense", "l-grande5", "l-neuf", "mosaique", "mosaique-f"], "layout": "mosaique-f", "sur": "Chinese daily · Paris 9e", "accroche": "CANTING CLUB — le chinois du quotidien", "pitch": "Cāntīng réinvente le traiteur chinois sans trahir ce qu'on aime en lui : la cheffe Sophie Ya y prépare dim sum moelleux, baozis et poulet laqué soja-gingembre, avec des bōls frais et croquants. Une cantine de la rue Saint-Lazare, pensée pour les déjeuners d'équipe.", "src": "@canting.club", "sel": ["i1", "i5", "i0", "i2", "i6", "i10", "i4", "i8"]}, {"k": "love", "nom": "LOVE", "accent": "#E0703A", "layouts": ["p-piliers", "p-alterne", "p-tript", "p-dense", "l-grande5", "l-neuf", "mosaique", "mosaique-f"], "layout": "mosaique-f", "sur": "Friends · Family · Food · Paris 16e", "accroche": "LOVE — l'assiette à composer, version 16e", "pitch": "LOVE, c'est friends, family, food : une table du 16e où l'on compose son assiette parmi 1650 combinaisons, entre chakchouka mijotée des heures, labné et dips au comptoir. Jus frais maison, coffee shop et pâtisseries : un déjeuner healthy, généreux, à partager ou à emporter.", "src": "@loverestaurantparis", "sel": ["i26", "i12", "i27", "i17", "i30", "i31", "i16", "i24"]}, {"k": "meurette", "nom": "Meurette", "accent": "#B0382F", "layouts": ["p-piliers", "p-alterne", "p-tript", "p-dense", "l-grande5", "l-neuf", "mosaique", "mosaique-f"], "layout": "mosaique-f", "sur": "Cocottes mijotées · Paris 8e & 9e", "accroche": "MEURETTE — la cocotte comme chez mamie", "pitch": "Chez Meurette, on compose sa cocotte : un plat mijoté maison, deux accompagnements, deux toppings. Cordon bleu au comté, saucisse purée, poulet moutarde : la cantine comme chez mamie, dans trois adresses des 8e et 9e arrondissements, sur place, à emporter ou livrée au bureau.", "src": "@meurette_groupe · meurettegroupe.com", "sel": ["i35", "i36", "i38", "i40", "i43", "i39", "i41", "i45"]}, {"k": "pasta-oro", "nom": "Pasta Oro", "accent": "#C99A2E", "layouts": ["p-piliers", "p-alterne", "p-tript", "p-dense", "l-grande5", "l-neuf", "mosaique", "mosaique-f"], "layout": "mosaique-f", "sur": "Trattoria · Paris 16e & Boulogne", "accroche": "PASTA ORO — l'Italie à table, de Paris à Boulogne", "pitch": "Pasta Oro met l'Italie dans l'assiette : pâtes faites maison aux sauces généreuses, pizzas à la farine longuement maturée, recettes inspirées des régions de la botte et transmises de génération en génération. Deux tables chaleureuses, à Paris 16e et à Boulogne-Billancourt.", "src": "@pasta.oro · pastaoro.fr", "sel": ["i53", "i50", "i51", "i48", "i55", "i52", "i46", "i54"]}]};
+let state = {}, cur = null, filt = 'tous';
+const byId = id => D.pool.find(p => p.id === id);
+const thumb = (u,w) => u.endsWith('.svg') ? u : u+'?tr=w-'+w+',q-80';
+const fmtOf = r => r < 0.8 ? '9:16' : r > 1.2 ? '3:2' : '1:1';
+const off = (a,b) => Math.abs(Math.log(a/b)) > 0.25;
+
+function initState(){ state = {}; D.brands.forEach(b => state[b.k] = {layout:b.layout, sel:b.sel.slice()}); }
+
+function render(){
+  const root = document.getElementById('boards'); root.innerHTML = '';
+  D.brands.forEach(b => {
+    const st = state[b.k], L = D.layouts[st.layout];
+    const s = document.createElement('section'); s.className = 'brand';
+    const btns = b.layouts.map(k =>
+      '<button class="' + (k===st.layout?'on':'') + '" onclick="setLayout(\'' + b.k + '\',\'' + k + '\')">' +
+      D.layouts[k].nom + ' · ' + D.layouts[k].slots.length + '</button>').join('');
+    s.innerHTML = '<div class="hd"><div><div class="sur" style="color:' + b.accent + '">' + b.sur + '</div>' +
+      '<h2 class="bn" style="color:' + b.accent + '">' + b.nom + '</h2>' +
+      '<p class="acc" style="color:' + b.accent + '">' + b.accroche + '</p></div>' +
+      '<div><p class="pitch">' + b.pitch + '</p><p class="meta">Images : ' + b.src + '</p></div></div>' +
+      '<div class="presets">' + btns + '</div><div class="board"></div>';
+    root.appendChild(s);
+    const bd = s.querySelector('.board');
+    bd.style.gridTemplateColumns = 'repeat(' + L.cols + ',1fr)';
+    if(L.rowH){ bd.style.gridAutoRows = L.rowH + 'px'; bd.style.gridTemplateRows = ''; bd.style.aspectRatio = ''; }
+    else { bd.style.gridTemplateRows = 'repeat(' + L.rows + ',1fr)'; bd.style.gridAutoRows = ''; bd.style.aspectRatio = L.aspect; }
+    L.slots.forEach((p,i) => {
+      const img = st.sel[i] ? byId(st.sel[i]) : null;
+      const d = document.createElement('div');
+      d.className = 'slot' + (img && img.t === 'identite' ? ' contain' : '');
+      d.style.gridColumn = p[0] + ' / span ' + p[2];
+      d.style.gridRow = p[1] + ' / span ' + p[3];
+      d.onclick = () => openDrawer(b.k, i, d);
+      d.innerHTML = img
+        ? '<img src="' + thumb(img.u,900) + '" alt="' + img.l + '" onerror="this.style.display=\'none\'"><span class="cap">' + img.l + '</span>'
+        : '<span class="cap">Vide</span>';
+      bd.appendChild(d);
+      if(img && img.t !== 'identite'){
+        requestAnimationFrame(() => { const r = d.getBoundingClientRect();
+          if(r.height && off(img.r, r.width / r.height)) d.classList.add('crop'); });
+      }
+    });
+  });
+  save();
+}
+
+function setLayout(bk, l){
+  const st = state[bk], need = D.layouts[l].slots.length;
+  const pool = D.pool.filter(p => p.b === bk);
+  while(st.sel.length < need){ const n = pool.find(p => !st.sel.includes(p.id)); st.sel.push(n ? n.id : null); }
+  st.layout = l; render();
+}
+
+function openDrawer(bk, i, el){
+  const r = el.getBoundingClientRect();
+  cur = {bk: bk, i: i, target: r.height ? r.width / r.height : 1};
+  const b = D.brands.find(x => x.k === bk);
+  document.getElementById('dt').textContent = 'Remplacer — ' + b.nom;
+  document.getElementById('dp').textContent = 'Tuile ' + fmtOf(cur.target) + ' · les formats compatibles sont proposés en premier';
+  drawCands();
+  document.getElementById('drawer').classList.add('open');
+}
+
+function drawCands(){
+  const st = state[cur.bk], t = cur.target;
+  document.getElementById('dfilters').innerHTML = ['tous','produit','univers','identite'].map(f =>
+    '<button class="' + (f===filt?'on':'') + '" onclick="filt=\'' + f + '\';drawCands()">' + f + '</button>').join('');
+  const list = D.pool.filter(p => p.b === cur.bk && (filt === 'tous' || p.t === filt))
+                     .sort((a,c) => Math.abs(Math.log(a.r/t)) - Math.abs(Math.log(c.r/t)));
+  const g = document.getElementById('dgrid'); g.innerHTML = ''; g.scrollTop = 0;
+  list.forEach(p => {
+    const d = document.createElement('div');
+    d.className = 'cand' + (st.sel.includes(p.id) ? ' used' : '') + (off(p.r, t) ? ' warn' : '');
+    d.innerHTML = '<img loading="lazy" src="' + thumb(p.u,320) + '" alt="' + p.l + '" onerror="this.style.display=\'none\'">' +
+      '<span class="fmt">' + fmtOf(p.r) + '</span><span class="n">' + p.l + '</span>';
+    d.onclick = () => { st.sel[cur.i] = p.id; closeDrawer(); render(); };
+    g.appendChild(d);
+  });
+}
+function closeDrawer(){ document.getElementById('drawer').classList.remove('open'); }
+
+function recipe(){
+  return D.brands.map(b => {
+    const st = state[b.k], L = D.layouts[st.layout];
+    return b.nom + '\n  schema: ' + L.nom + ' (' + st.layout + ')\n' +
+      L.slots.map((_,i) => {
+        const p = st.sel[i] ? byId(st.sel[i]) : null;
+        return '  ' + (i+1) + '. ' + (p ? p.l + '  [' + p.u.split('/').pop() + ']' : '(vide)');
+      }).join('\n');
+  }).join('\n\n');
+}
+function save(){
+  document.getElementById('out').value = recipe();
+  try{ location.hash = btoa(unescape(encodeURIComponent(JSON.stringify(state)))); }catch(e){}
+}
+function load(){
+  initState();
+  if(location.hash.length > 3){
+    try{ const s = JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(1)))));
+      if(s && Object.keys(s).length) state = s; }catch(e){}
+  }
+}
+function reset(){ location.hash = ''; initState(); render(); }
+function copyOut(){ const t = document.getElementById('out'); t.select(); document.execCommand('copy'); }
+load(); render();
+</script></body></html>
